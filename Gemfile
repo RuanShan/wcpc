@@ -23,6 +23,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'devise'
 gem 'high_voltage'
+gem 'simple_form'
+
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
@@ -41,4 +43,10 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+
+if Gem.win_platform?
+  #gem 'coffee-script-source', '1.8.0'
+  #gem 'wdm', '>= 0.1.0'
+  gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 end

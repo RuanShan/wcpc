@@ -20,6 +20,10 @@ module Wcpc
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    config.time_zone = 'Beijing'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.default_locale = :"zh-CN"
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

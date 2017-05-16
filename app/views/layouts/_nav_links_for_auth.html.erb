@@ -1,10 +1,13 @@
+<li class='nav-item'><%= link_to '首页', root_path, class: 'nav-link' %></li>
 <% if user_signed_in? %>
-  <li class='nav-item'><%= link_to 'Edit account', edit_user_registration_path, class: 'nav-link' %></li>
-  <li class='nav-item'><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '编辑账户', edit_user_registration_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '编辑企业信息', edit_shop_path(Shop.first), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '编辑活动信息', edit_activity_path(Activity.first), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '退出', destroy_user_session_path, :method=>'delete', class: 'nav-link' %></li>
 <% else %>
-  <li class='nav-item'><%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %></li>
-  <li class='nav-item'><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '登录', new_user_session_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '注册', new_user_registration_path, class: 'nav-link' %></li>
 <% end %>
 <% if user_signed_in? %>
-  <li class='nav-item'><%= link_to 'Users', users_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '所有用户', users_path, class: 'nav-link' %></li>
 <% end %>

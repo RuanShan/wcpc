@@ -7,3 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+
+shop = Shop.create(name:'请填写企业名称', intro:'')
+puts 'CREATED SHOP 1'
+
+activity = Activity.create(
+  name:'请填写活动名称',
+  intro:'',
+  traffic:0,
+  start_time:DateTime.current,
+  terminate_time:DateTime.current.since(1.month),
+  shop:shop
+)
+puts 'CREATED ACTIVITY 1'

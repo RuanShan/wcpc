@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    attributes:
+      shop:
+        name: "企业名称"
+        intro: "企业介绍"
+      activity:
+        name: "活动名称"
+        intro: "活动详情"
+        start_time: "开始时间"
+        terminate_time: "截止时间"

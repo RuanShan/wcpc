@@ -10,7 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516124738) do
+ActiveRecord::Schema.define(version: 20170516135046) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "name"
+    t.text     "intro"
+    t.integer  "traffic"
+    t.datetime "start_time"
+    t.datetime "terminate_time"
+    t.integer  "shop_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["shop_id"], name: "index_activities_on_shop_id"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "serial_number"
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["activity_id"], name: "index_coupons_on_activity_id"
+    t.index ["user_id"], name: "index_coupons_on_user_id"
+  end
+
+  create_table "photographs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "intro"
+    t.text     "manifesto"
+    t.integer  "vote_numbers"
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["activity_id"], name: "index_photographs_on_activity_id"
+    t.index ["user_id"], name: "index_photographs_on_user_id"
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.text     "intro"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,6 +70,15 @@ ActiveRecord::Schema.define(version: 20170516124738) do
     t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "photograph_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["photograph_id"], name: "index_votes_on_photograph_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end

@@ -1,0 +1,17 @@
+<div> <h2 class="page-header">编辑活动信息 </h2>
+</div>
+<div>
+  <%= simple_form_for(@activity, url: {:action=>"update"} ) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :intro %>
+      <%= f.input :start_time, as: :datetime, start_year: Date.today.year,
+                              end_year: Date.today.year + 10, default: 1.hour.from_now %>
+      <%= f.input :terminate_time, as: :datetime, start_year: Date.today.year,
+                              end_year: Date.today.year + 10, default: 1.month.from_now%>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "提交" %>
+    </div>
+  <% end %>
+</div>
