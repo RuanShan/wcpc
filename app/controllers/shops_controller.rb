@@ -7,6 +7,7 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     @shop.update(shop_params)
+    render :edit
   end
 
   private

@@ -1,0 +1,14 @@
+<div class="weui-tabbar">
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' && params[:action] == 'index'%>weui-bar__item_on<%end%>" href="/">
+    <p class="weui-tabbar__label">首页</p>
+  </a>
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'ranking'%>weui-bar__item_on<%end%>" href="/ranking">
+    <p class="weui-tabbar__label">排名</p>
+  </a>
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'intro'%>weui-bar__item_on<%end%>" href="/intro">
+    <p class="weui-tabbar__label">说明</p>
+  </a>
+  <a class="weui-tabbar__item" href="javascript:;">
+    <p class="weui-tabbar__label">其他</p>
+  </a>
+</div>

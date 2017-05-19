@@ -20,11 +20,19 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'figaro'
 gem 'devise'
 gem 'high_voltage'
 gem 'simple_form'
-
+gem 'paperclip'
+gem 'wechat'
+gem "omniauth-wechat-oauth2"
+gem 'weui-rails'
+gem 'will_paginate', '~> 3.1.0'
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil

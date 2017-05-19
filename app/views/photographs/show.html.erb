@@ -1,0 +1,19 @@
+<div class="weui-cells__title"></div>
+<article class="weui-article">
+  <h1><%=@photograph.name%></h1>
+  <section>
+    <h2 class="title">当前票数</h2>
+    <p><span id="votes<%= @photograph.id%>"><%=@photograph.vote_numbers.to_i%></span></p>
+    <h2 class="title">作品简介</h2>
+    <p><%= @photograph.intro%></p>
+    <h2 class="title">拉票宣言</h2>
+    <p><%= @photograph.manifesto%></p>
+    <h2 class="title">作品展示</h2>
+    <% @photograph.photos.each do |photo|%>
+      <p><%= image_tag photo.photo.url%></p>
+    <%end%>
+  </section>
+</article>
+<div class="weui-btn-area">
+  <%= link_to "投票", vote_activity_photograph_path(@activity,@photograph), remote:true, class:"weui-btn weui-btn_primary" %>
+</div>

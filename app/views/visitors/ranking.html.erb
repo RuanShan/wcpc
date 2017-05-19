@@ -1,0 +1,22 @@
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">投票排名（票数多者在前）</div>
+  <div class="weui-panel__bd">
+    <%page = params[:page].present? ? params[:page].to_i : 1%>
+    <%rank = (page-1) * Photograph.per_page + 1%>
+    <%@photographs.each do |photograph|%>
+      <%=link_to activity_photograph_path(@activity,photograph), class:"weui-media-box weui-media-box_appmsg" do %>
+        <div class="weui-media-box__hd">
+          <%=image_tag photograph.cover_url, width:"60", height:"60" %>
+        </div>
+        <div class="weui-media-box__bd">
+          <h4 class="weui-media-box__title"><b><%= rank%></b><%= photograph.name%></h4>
+          <p class="weui-media-box__desc"><span>票数：<%=photograph.vote_numbers.to_i%></span></p>
+        </div>
+      <%end%>
+      <%rank +=1%>
+    <%end%>
+  </div>
+  <div class="weui-panel__ft">
+    <%= will_paginate @photographs %>
+  </div>
+</div>

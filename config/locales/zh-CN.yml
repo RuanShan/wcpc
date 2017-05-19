@@ -9,3 +9,8 @@ zh-CN:
         intro: "活动详情"
         start_time: "开始时间"
         terminate_time: "截止时间"
+      photograph:
+        name: "作品名称"
+        intro: "作品介绍"
+        manifesto: "拉票宣言"
+        photo: "活动照片"

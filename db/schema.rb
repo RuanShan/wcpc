@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516135046) do
+ActiveRecord::Schema.define(version: 20170517142830) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
@@ -41,10 +41,25 @@ ActiveRecord::Schema.define(version: 20170516135046) do
     t.integer  "vote_numbers"
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["activity_id"], name: "index_photographs_on_activity_id"
     t.index ["user_id"], name: "index_photographs_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "photograph_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["photograph_id"], name: "index_photos_on_photograph_id"
   end
 
   create_table "shops", force: :cascade do |t|

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><%=@activity.name%></title>
+    <%= stylesheet_link_tag 'weui-rails', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
+</head>
+<body ontouchstart>
+  <div style="position:absolute;bottom:0;top:0;left:0;right:0;">
+    <div class="weui-tab">
+      <div class="weui-tab__panel">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/wechat_footer' %>
+    </div>
+  </div>
+</body>
+</html>
