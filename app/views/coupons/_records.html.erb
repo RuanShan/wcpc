@@ -1,0 +1,28 @@
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>优惠券号码</th>
+        <th>获得者</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @coupons.empty? %>
+        <tr>
+          <td colspan="3">暂无优惠券</td>
+        <tr>
+      <% else %>
+      <% @coupons.each do |coupon| %>
+        <tr>
+          <td><%= coupon.serial_number %></td>
+          <td><%= coupon.user_name %></td>
+          <td><%= link_to "删除", activity_coupon_path(@activity, coupon), method: 'delete' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    </tbody>
+  </table>
+
+<%= will_paginate @coupons if @coupons.respond_to? :total_pages%>

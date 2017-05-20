@@ -1,7 +1,7 @@
 class Photograph < ApplicationRecord
   belongs_to :activity
   belongs_to :user
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/pic_160.png"
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   accepts_nested_attributes_for :photos, allow_destroy: true

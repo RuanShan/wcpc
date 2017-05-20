@@ -34,18 +34,20 @@
         <div class="weui-cell__hd">
           <%= f.label :photo, class:"weui-label" %>
         </div>
-        <div class="weui-cell__bd">
+        <div id="photos_div" class="weui-cell__bd">
           <%= f.fields_for :photos do |photos_form| %>
-            <div id="photodiv<%=photos_form.index%>" class="weui-uploader__file" style="display:none;">
-              <%=link_to nil, href:"#", onclick:"delete_photo(#{photos_form.index});" do %>
-                <i class="weui-icon-cancel" style="margin-left: 50px;"></i>
-              <% end %>
-              <div style="margin-top:-25px;float:left;">
-                <%=image_tag "pic_160.png", id:"photo#{photos_form.index}", width:"80", height:"80"%>
+            <div id="wrapper_div<%=photos_form.index%>" class="wrapper_div">
+              <div id="photodiv<%=photos_form.index%>" class="weui-uploader__file" style="display:none;">
+                <%=link_to nil, href:"#", onclick:"delete_photo(#{photos_form.index});" do %>
+                  <i class="weui-icon-cancel" style="margin-left: 50px;"></i>
+                <% end %>
+                <div style="margin-top:-25px;float:left;">
+                  <%=image_tag "pic_160.png", id:"photo#{photos_form.index}", width:"80", height:"80"%>
+                </div>
               </div>
-            </div>
-            <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% if photos_form.index > 0 %> style="display:none;"<%end%>>
-              <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
+              <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% if photos_form.index > 0 %> style="display:none;"<%end%>>
+                <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
+              </div>
             </div>
           <% end %>
           <%if @photograph.errors.include?(:photos)%>请至少上传一张图片，格式为jpg, jpeg, png或gif<%end%>

@@ -44,22 +44,43 @@ function preview_photo(file,index){
     div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
   }
   $("#photodiv"+index).show();
-  if($("#uploaddiv"+(index+1))){
-    $("#uploaddiv"+(index+1)).show();
-  }
   $("#uploaddiv"+index).hide();
+  if($("#wrapper_div"+index).nextAll(".wrapper_div").length>0){
+    $("#wrapper_div"+index).nextAll(".wrapper_div").first().children(".weui-uploader__input-box").show();
+  }
+
 }
 
 function delete_photo(index){
-  if($("#uploaddiv"+(index+1))){
-    if($("#photograph_photos_attributes_"+(index+1)+"_photo").prop('files').size > 0){
-      $("#photograph_photos_attributes_"+index+"_photo").prop('files', $("#photograph_photos_attributes_"+(index+1)+"_photo").prop('files'));
-      $("#photodiv"+index).html($("#photodiv"+(index+1)).html());
-      delete_photo(index+1);
-    }else{
-      $("#photograph_photos_attributes_"+index+"_photo").val('');
-      $("#photodiv"+index).hide();
+  //remove data
+  $("#photograph_photos_attributes_"+index+"_photo").val('');
+  $("#photodiv"+index).hide();
+  if($("#wrapper_div"+index).nextAll(".wrapper_div").length==0){
+    $("#uploaddiv"+index).show();
+  }else{
+    //show upload img
+    var next_wrapper = $("#wrapper_div"+index).nextAll(".wrapper_div").first();
+    while(next_wrapper.length>0){
+      if(next_wrapper.children(".weui-uploader__input-box").children(".weui-uploader__input").prop('files').length>0){
+        next_wrapper = next_wrapper.nextAll(".wrapper_div").first();
+      }else{
+        next_wrapper.children(".weui-uploader__input-box").show();
+        break;
+      }
     }
+    //move current to the end of outer div
+    $("#wrapper_div"+index).appendTo("#photos_div");
+  }
+}
+
+function delete_editing_photo(index){
+  delete_photo(index);
+  if($("#photograph_photos_attributes_"+index+"_id").length>0){
+    var photo_id = $("#photograph_photos_attributes_"+index+"_id").val();
+    $("#photos_div").prepend("<input id='photograph_photos_attributes_"+(index+5)+"__destroy' value='true' name='photograph[photos_attributes]["+(index+5)+"][_destroy]' type='hidden'>");
+    $("#photos_div").prepend("<input id='photograph_photos_attributes_"+(index+5)+"_id' value='"+photo_id+"' name='photograph[photos_attributes]["+(index+5)+"][id]' type='hidden'>");
+    $("#photograph_photos_attributes_"+index+"_id").remove();
+    $("#photograph_photos_attributes_"+index+"__destroy").remove();
   }
 }
 

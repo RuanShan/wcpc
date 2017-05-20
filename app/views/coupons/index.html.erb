@@ -1,0 +1,28 @@
+<div> <h2 class="page-header">优惠券管理 </h2>
+</div>
+<div>
+  <div class="">
+    <%=form_tag search_activity_coupons_path(@activity), method:"get", class:"form-inline", role:"form" do%>
+      <div class="form-group">
+        <label for="serial_number">优惠券号码</label>
+        <%=text_field_tag "serial_number", '', class:"form-control"%>
+      </div>
+      <div class="form-group">
+        <%=submit_tag "查询",  class:"form-control"%>
+      </div>
+    <%end%>
+    <%@coupon = @activity.coupons.build%>
+    <%=simple_form_for @coupon, url: {:action=>"create"} do |f|%>
+      <%= f.input :activity_id, as: :hidden %>
+      <div class="form-inputs">
+        <%=f.input "serial_number"%>
+      </div>
+      <div class="form-actions">
+        <%=f.button :submit, "添加"%>
+      </div>
+    <%end%>
+  </div>
+  <div style="padding-top:20px;">
+    <%= render partial: "records" %>
+  </div>
+</div>

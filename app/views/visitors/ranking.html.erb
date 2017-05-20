@@ -4,7 +4,7 @@
     <%page = params[:page].present? ? params[:page].to_i : 1%>
     <%rank = (page-1) * Photograph.per_page + 1%>
     <%@photographs.each do |photograph|%>
-      <%=link_to activity_photograph_path(@activity,photograph), class:"weui-media-box weui-media-box_appmsg" do %>
+      <%=link_to "/show/#{photograph.id}", class:"weui-media-box weui-media-box_appmsg" do %>
         <div class="weui-media-box__hd">
           <%=image_tag photograph.cover_url, width:"60", height:"60" %>
         </div>

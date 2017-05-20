@@ -12,4 +12,8 @@ class VisitorsController < ApplicationController
   def intro
   end
 
+  def show
+    @photograph = Photograph.find(params[:id])
+  end
+
 end

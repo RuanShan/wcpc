@@ -1,19 +1,46 @@
-<div class="weui-cells__title"></div>
-<article class="weui-article">
-  <h1><%=@photograph.name%></h1>
-  <section>
-    <h2 class="title">当前票数</h2>
-    <p><span id="votes<%= @photograph.id%>"><%=@photograph.vote_numbers.to_i%></span></p>
-    <h2 class="title">作品简介</h2>
-    <p><%= @photograph.intro%></p>
-    <h2 class="title">拉票宣言</h2>
-    <p><%= @photograph.manifesto%></p>
-    <h2 class="title">作品展示</h2>
-    <% @photograph.photos.each do |photo|%>
-      <p><%= image_tag photo.photo.url%></p>
-    <%end%>
-  </section>
-</article>
-<div class="weui-btn-area">
-  <%= link_to "投票", vote_activity_photograph_path(@activity,@photograph), remote:true, class:"weui-btn weui-btn_primary" %>
+<div>
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td>作品名称</td>
+      </tr>
+      <tr>
+        <td><%= @photograph.name %></td>
+      </tr>
+      <tr>
+        <td>作者</td>
+      </tr>
+      <tr>
+        <td><%= @photograph.user.name %></td>
+      </tr>
+      <tr>
+        <td>当前票数</td>
+      </tr>
+      <tr>
+        <td><%= @photograph.vote_numbers.to_i %></td>
+      </tr>
+      <tr>
+        <td>作品简介</td>
+      </tr>
+      <tr>
+        <td><%= @photograph.intro %></td>
+      </tr>
+      <tr>
+        <td>拉票宣言</td>
+      </tr>
+      <tr>
+        <td><%=@photograph.manifesto %></td>
+      </tr>
+      <tr>
+        <td>作品展示</td>
+      </tr>
+      <tr>
+        <td>
+          <% @photograph.photos.each do |photo|%>
+            <p><%= image_tag photo.photo.url%></p>
+          <%end%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

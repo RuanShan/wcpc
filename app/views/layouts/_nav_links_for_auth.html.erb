@@ -1,8 +1,10 @@
 <li class='nav-item'><%= link_to '首页', root_path, class: 'nav-link' %></li>
 <% if user_signed_in? %>
   <li class='nav-item'><%= link_to '编辑账户', edit_user_registration_path, class: 'nav-link' %></li>
-  <li class='nav-item'><%= link_to '编辑企业信息', edit_shop_path(Shop.first), class: 'nav-link' %></li>
-  <li class='nav-item'><%= link_to '编辑活动信息', edit_activity_path(Activity.first), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '编辑企业信息', edit_shop_path(@shop), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '编辑活动信息', edit_activity_path(@activity), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '活动作品管理', activity_photographs_path(@activity), class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to '优惠券管理', activity_coupons_path(@activity), class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to '退出', destroy_user_session_path, :method=>'delete', class: 'nav-link' %></li>
 <% else %>
   <li class='nav-item'><%= link_to '登录', new_user_session_path, class: 'nav-link' %></li>

@@ -14,3 +14,5 @@ zh-CN:
         intro: "作品介绍"
         manifesto: "拉票宣言"
         photo: "活动照片"
+      coupon:
+        serial_number: "优惠券号码"

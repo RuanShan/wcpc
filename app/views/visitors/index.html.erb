@@ -6,11 +6,26 @@
   <%=link_to "我要参加", new_activity_photograph_path(@activity), class:"weui-btn weui-btn_primary"%>
 </div>
 
+<div id="searchBar" class="weui-search-bar">
+  <form class="weui-search-bar__form">
+    <div class="weui-search-bar__box">
+      <i class="weui-icon-search"></i>
+      <input id="searchInput" class="weui-search-bar__input" placeholder="搜索" required="" type="search">
+      <a id="searchClear" class="weui-icon-clear" href="javascript:"></a>
+    </div>
+    <label id="searchText" class="weui-search-bar__label">
+      <i class="weui-icon-search"></i>
+      <span>搜索</span>
+    </label>
+  </form>
+  <a id="searchCancel" class="weui-search-bar__cancel-btn" href="javascript:">取消</a>
+</div>
+
 <div class="row">
   <%@photographs.each do |photograph|%>
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
-        <%=link_to activity_photograph_path(@activity,photograph) do %>
+        <%=link_to "/show/#{photograph.id}" do %>
           <%=image_tag photograph.cover_url(:medium) %>
         <%end%>
         <div class="caption">

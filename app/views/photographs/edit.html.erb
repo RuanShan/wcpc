@@ -1,2 +1,35 @@
-<h1>Photographs#edit</h1>
-<p>Find me in app/views/photographs/edit.html.erb</p>
+<div> <h2 class="page-header">编辑作品 </h2>
+</div>
+<div>
+  <%= simple_form_for(@photograph, url: {:action=>"update"} ) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :intro %>
+      <%= f.input :manifesto %>
+      <div id="photos_div" style="margin-bottom:10px;">
+        <%= f.fields_for :photos do |photos_form| %>
+          <div id="wrapper_div<%=photos_form.index%>" class="wrapper_div">
+            <%if @photograph.photos[photos_form.index].persisted?%>
+              <%= photos_form.hidden_field :_destroy%>
+            <% end %>
+            <div id="photodiv<%=photos_form.index%>" class="weui-uploader__file" <%unless @photograph.photos[photos_form.index].persisted?%>style="display:none;"<%end%>>
+              <%=link_to nil, href:"#", onclick:"delete_editing_photo(#{photos_form.index});" do %>
+                <i class="weui-icon-cancel" style="margin-left: 50px;"></i>
+              <% end %>
+              <div style="margin-top:-25px;float:left;">
+                <%=image_tag @photograph.photos[photos_form.index].photo.url, id:"photo#{photos_form.index}", width:"80", height:"80"%>
+              </div>
+            </div>
+            <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% unless @photograph.photos.select{|p|p.photo.present?}.size == photos_form.index %> style="display:none;"<%end%>>
+              <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </br></br></br></br>
+    <div class="form-actions">
+      <%= f.button :submit, "提交" %>
+    </div>
+  <% end %>
+</div>
