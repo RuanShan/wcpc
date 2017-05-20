@@ -1,10 +1,12 @@
+<%= tinymce_assets %>
 <div> <h2 class="page-header">编辑企业信息 </h2>
 </div>
 <div>
   <%= simple_form_for(@shop, url: {:action=>"update"} ) do |f| %>
     <div class="form-inputs">
       <%= f.input :name %>
-      <%= f.input :intro %>
+      <%= f.input :intro, input_html: { class: 'tinymce' } %>
+      <%= tinymce%>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "提交" %>

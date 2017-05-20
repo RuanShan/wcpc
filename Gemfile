@@ -28,6 +28,8 @@ gem 'figaro'
 gem 'devise'
 gem 'high_voltage'
 gem 'simple_form'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 gem 'paperclip'
 gem 'wechat'
 gem "omniauth-wechat-oauth2"
