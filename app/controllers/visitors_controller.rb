@@ -1,6 +1,6 @@
 class VisitorsController < ApplicationController
   layout "wechat"
-
+  before_action :set_wechat_user
   def index
     @photographs = @activity.photographs.paginate(:page => params[:page])
   end
@@ -15,5 +15,8 @@ class VisitorsController < ApplicationController
   def show
     @photograph = Photograph.find(params[:id])
   end
+
+  private
+
 
 end

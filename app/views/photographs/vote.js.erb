@@ -1,1 +1,4 @@
 $("#votes<%=@photograph.id%>").html(<%=@photograph.vote_numbers%>);
+<% dialog_content = @vote.errors.empty? ? "投票成功！" : @vote.errors.messages[:user_id][0] %>
+$(".weui-dialog__bd").html("<%=dialog_content%>")
+$('#iosDialog2').fadeIn(200);

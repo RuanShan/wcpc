@@ -32,7 +32,6 @@ gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem 'paperclip'
 gem 'wechat'
-gem "omniauth-wechat-oauth2"
 gem 'weui-rails'
 gem 'will_paginate', '~> 3.1.0'
 group :development do

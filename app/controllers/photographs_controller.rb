@@ -1,6 +1,7 @@
 class PhotographsController < ApplicationController
-  layout "wechat", only: ["new", "create"]
-
+  layout "wechat", only: [:new, :create, :vote]
+  before_action :set_wechat_user, only: [:new, :create, :vote]
+  before_action :authenticate_user!, except: [:new, :create, :vote]
   before_action :set_photograph, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
@@ -17,8 +18,13 @@ class PhotographsController < ApplicationController
   end
 
   def new
-    @photograph = @activity.photographs.build(user:User.first)
-    5.times { @photograph.photos.build}
+    #@photograph = @activity.photographs.build(user_id:@current_wechat_user.id)
+    @photograph = @activity.photographs.find_or_create_by(user_id:@current_wechat_user.id)
+    if @photograph.persisted?
+      redirect_to "/show/#{@photograph.id}"
+    else
+      5.times { @photograph.photos.build}
+    end
   end
 
   def create
@@ -59,10 +65,7 @@ class PhotographsController < ApplicationController
   end
 
   def vote
-    @photograph.vote
-    if @photograph.errors.empty?
-      flash[:notice] = "投票成功"
-    end
+    @vote = @photograph.vote(@current_wechat_user.id)
   end
 
   private

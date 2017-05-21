@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_shop_activity
   before_action :set_page_view
+  wechat_api
 
   protected
 
@@ -26,4 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_wechat_user
+    wechat_oauth2("snsapi_userinfo") do |openid,other_info|
+      user_info = Wechat.api.web_userinfo(other_info["access_token"],other_info["openid"])
+      logger.debug "user_info=#{user_info.inspect}"
+      @current_wechat_user = User.find_or_create_by(uid: openid)
+      @current_wechat_user.update_info(user_info)
+    end
+  end
 end

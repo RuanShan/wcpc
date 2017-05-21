@@ -16,6 +16,12 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+$(function(){
+  $('#iosDialog2').on('click', '.weui-dialog__btn', function(){
+    $(this).parents('.js_dialog').fadeOut(200);
+  });
+});
+
 function preview_photo(file,index){
   var MAXWIDTH  = 80;
   var MAXHEIGHT = 80;

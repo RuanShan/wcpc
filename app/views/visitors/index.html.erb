@@ -23,23 +23,17 @@
 
 <div class="row">
   <%@photographs.each do |photograph|%>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail">
+    <article class="weui-article">
+      <h1><%=photograph.name%></h1>
+      <section>
+        <h2 class="title">当前票数:<span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span></h2>
         <%=link_to "/show/#{photograph.id}" do %>
-          <%=image_tag photograph.cover_url(:medium) %>
+          <%=image_tag photograph.cover_url %>
         <%end%>
-        <div class="caption">
-            <h3><%= photograph.name%></h3>
-            <p><%= photograph.intro%></p>
-            <p>
-              <span>票数：<span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span></span>
-              <div class="weui-btn-area">
-                <%=link_to "投票", vote_activity_photograph_path(@activity,photograph), remote:true, class:"weui-btn weui-btn_primary" %>
-              </div>
-            </p>
-        </div>
-
-      </div>
+      </section>
+    </article>
+    <div class="weui-btn-area">
+      <%=link_to "投票", vote_activity_photograph_path(@activity,photograph), remote:true, class:"weui-btn weui-btn_primary" %>
     </div>
   <%end%>
   <%= will_paginate @photographs %>

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get '/ranking'=>'visitors#ranking'
   get '/intro'=>'visitors#intro'
   get '/show/:id'=>'visitors#show'
+
   devise_for :users
+
   resources :users
 
   resources :shops
