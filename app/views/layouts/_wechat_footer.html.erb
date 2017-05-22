@@ -2,13 +2,16 @@
   <a class="weui-tabbar__item <%if params[:controller] == 'visitors' && params[:action] == 'index'%>weui-bar__item_on<%end%>" href="/">
     <p class="weui-tabbar__label">首页</p>
   </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'ranking'%>weui-bar__item_on<%end%>" href="/ranking">
-    <p class="weui-tabbar__label">排名</p>
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>weui-bar__item_on<%end%>" href="/works">
+    <p class="weui-tabbar__label">作品</p>
   </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'intro'%>weui-bar__item_on<%end%>" href="/intro">
-    <p class="weui-tabbar__label">说明</p>
+  <a class="weui-tabbar__item <%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>weui-bar__item_on<%end%>" href="/activities/<%=@activity.id%>/photographs/new.html">
+    <p class="weui-tabbar__label">上传</p>
   </a>
-  <a class="weui-tabbar__item" href="/users">
-    <p class="weui-tabbar__label">其他</p>
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>weui-bar__item_on<%end%>" href="/review">
+    <p class="weui-tabbar__label">追溯</p>
+  </a>
+  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'my_account'%>weui-bar__item_on<%end%>" href="/my_account">
+    <p class="weui-tabbar__label">我的</p>
   </a>
 </div>

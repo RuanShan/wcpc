@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     end
   end
   root to: 'visitors#index'
-  get '/ranking'=>'visitors#ranking'
-  get '/intro'=>'visitors#intro'
+  #get '/ranking'=>'visitors#ranking'
+  get '/review'=>'visitors#review'
+  get '/works'=>'visitors#works'
+  get '/my_account'=>'visitors#my_account'
   get '/show/:id'=>'visitors#show'
 
   devise_for :users
