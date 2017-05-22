@@ -16,3 +16,8 @@ zh-CN:
         photo: "活动照片"
       coupon:
         serial_number: "优惠券号码"
+      card:
+        name: "名称"
+        origin: "来源"
+        start_date: "开始日期"
+        end_date: "结束日期"

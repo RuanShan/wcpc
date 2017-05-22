@@ -12,7 +12,7 @@
     <script type="application/javascript">
       window.share_config = {
            "share": {
-              "imgUrl": "<%=@current_wechat_user.avatar%>",//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。
+              "imgUrl": "",//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。
               "desc" : "<%= @activity.intro.gsub(/<\/?.*?>/,'')%>",//摘要,如果分享到朋友圈的话，不显示摘要。
               "title" : "我是<%=@current_wechat_user.nickname%>正在参加<%=@activity.name%>活动",//分享卡片标题
               "link": "<%=root_url%>",//window.location.href,分享出去后的链接，这里可以将链接设置为另一个页面。

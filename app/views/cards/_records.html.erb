@@ -1,0 +1,31 @@
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>优惠券名称</th>
+        <th>来源</th>
+        <th>有效期</th>
+        <th colspan="2"><%=link_to "添加", new_card_path %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @cards.empty? %>
+        <tr>
+          <td colspan="5">暂无优惠券</td>
+        <tr>
+      <% else %>
+      <% @cards.each do |card| %>
+        <tr>
+          <td><%= card.name %></td>
+          <td><%= card.origin %></td>
+          <td><%= card.duration %></td>
+          <td><%= link_to "编辑", edit_card_path(card) %></td>
+          <td><%= link_to "删除", card_path(card), method: 'delete' %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    </tbody>
+  </table>
+
+<%= will_paginate @cards if @cards.respond_to? :total_pages%>

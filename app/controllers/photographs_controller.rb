@@ -30,7 +30,6 @@ class PhotographsController < ApplicationController
   def create
     @photograph = Photograph.create(photograph_params)
     if @photograph.errors.empty?
-      flash[:notice] = "作品提交成功"
       redirect_to "/show/#{@photograph.id}"
     else
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"

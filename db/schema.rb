@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521145952) do
+ActiveRecord::Schema.define(version: 20170522134823) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170521145952) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["shop_id"], name: "index_activities_on_shop_id"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "origin"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "shop_id"
+    t.index ["shop_id"], name: "index_cards_on_shop_id"
   end
 
   create_table "coupons", force: :cascade do |t|
@@ -91,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170521145952) do
     t.string   "province"
     t.string   "city"
     t.string   "country"
+    t.integer  "card_status"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

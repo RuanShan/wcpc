@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :shops
+  resources :cards
   resources :activities do
     resources :photographs do
       collection do
@@ -24,11 +25,11 @@ Rails.application.routes.draw do
         get :vote
       end
     end
-    resources :coupons do
-      collection do
-        get :search
-      end
-    end
+    #resources :coupons do
+    #  collection do
+    #    get :search
+    #  end
+    #end
   end
 
 end

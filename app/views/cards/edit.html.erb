@@ -1,0 +1,15 @@
+<div> <h2 class="page-header">编辑优惠券 </h2>
+</div>
+<div>
+  <%=simple_form_for @card, url: {:action=>"update"} do |f|%>
+    <%=f.input :name %>
+    <%=f.input :origin%>
+    <%=f.input :start_date, as: :date, start_year: Date.today.year,
+                            end_year: Date.today.year + 10%>
+    <%=f.input :end_date, as: :date, start_year: Date.today.year,
+                            end_year: Date.today.year + 10%>
+    <div class="form-actions">
+      <%=f.button :submit, "提交"%>
+    </div>
+  <%end%>
+</div>

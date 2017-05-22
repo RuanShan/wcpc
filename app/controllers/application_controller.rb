@@ -35,4 +35,5 @@ class ApplicationController < ActionController::Base
       @current_wechat_user.update_info(user_info)
     end
   end
+
 end

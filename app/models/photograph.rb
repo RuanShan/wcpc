@@ -9,7 +9,7 @@ class Photograph < ApplicationRecord
 
   validates :name, :intro, :manifesto, :photos, presence: true
 
-  after_create :get_coupon
+  after_create :get_card
 
   self.per_page = 2
 
@@ -27,11 +27,14 @@ class Photograph < ApplicationRecord
     return vote
   end
 
-  def get_coupon
-    coupon = Coupon.where(user_id: nil).first
-    if coupon.present?
-      coupon.user_id=user_id
-      coupon.save
-    end
+  def get_card
+    wx_user = self.user
+    wx_user.card_status = 1
+    wx_user.save
+    #coupon = Coupon.where(user_id: nil).first
+    #if coupon.present?
+    #  coupon.user_id=user_id
+    #  coupon.save
+    #end
   end
 end
