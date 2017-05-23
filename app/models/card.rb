@@ -7,6 +7,6 @@ class Card < ApplicationRecord
   end
 
   def duration
-    start_date.to_s+"——"+end_date.to_s
+    start_date.strftime("%Y.%m.%d")+"——"+end_date.strftime("%Y.%m.%d")
   end
 end

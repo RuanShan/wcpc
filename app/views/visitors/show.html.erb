@@ -17,3 +17,11 @@
 <div class="weui-btn-area">
   <%= link_to "投票", vote_activity_photograph_path(@activity,@photograph), remote:true, class:"weui-btn weui-btn_primary" %>
 </div>
+<script>
+  $(function(){
+    <% if flash[:notice].present? && flash[:notice] == "create photograph" %>
+      $(".weui-dialog__bd").html("上传成功，您获得了一张<%=Card.first.name%>，请到我的优惠券查看！")
+      $('#iosDialog2').fadeIn(200);
+    <%end%>
+  });
+</script>

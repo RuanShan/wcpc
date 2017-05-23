@@ -11,7 +11,7 @@ class Photograph < ApplicationRecord
 
   after_create :get_card
 
-  self.per_page = 2
+  self.per_page = 6
 
   def cover_url(psize=nil)
     return photos.first.photo.url(psize)

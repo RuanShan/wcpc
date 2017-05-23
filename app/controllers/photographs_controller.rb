@@ -18,8 +18,8 @@ class PhotographsController < ApplicationController
   end
 
   def new
-    @photograph = @activity.photographs.build(user_id:@current_wechat_user.id)
-    #@photograph = @activity.photographs.find_or_create_by(user_id:@current_wechat_user.id)
+    #@photograph = @activity.photographs.build(user_id:@current_wechat_user.id)
+    @photograph = @activity.photographs.find_or_create_by(user_id:@current_wechat_user.id)
     if @photograph.persisted?
       redirect_to "/show/#{@photograph.id}"
     else
@@ -30,6 +30,7 @@ class PhotographsController < ApplicationController
   def create
     @photograph = Photograph.create(photograph_params)
     if @photograph.errors.empty?
+      flash[:notice] = "create photograph"
       redirect_to "/show/#{@photograph.id}"
     else
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"

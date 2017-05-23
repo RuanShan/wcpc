@@ -1,40 +1,123 @@
-<div class="weui-grids">
-  <p class="weui-grid__label">总投票数：<%=@activity.vote_numbers%></p>
-  <p class="weui-grid__label">总浏览量：<%=@activity.traffic.to_i%></p>
+<div class="weui-grids" style="background-color:#016934;">
+  <table style="width:100%;color:#f5d09d;">
+    <tr><td colspan=3>&nbsp;</td></tr>
+    <tr>
+      <td align="center" style="border-right:solid 1px #f5d09d;">
+        <table>
+          <tr><td align="center">参与选手</td></tr>
+          <tr><td align="center"><%=@activity.photographs.size%></td></tr>
+        </table>
+      </td>
+      <td align="center" style="border-right:solid 1px #f5d09d;">
+        <table>
+          <tr><td align="center">累计投票</td></tr>
+          <tr><td align="center"><%=@activity.vote_numbers%></td></tr>
+        </table>
+      </td>
+      <td align="center">
+        <table>
+          <tr><td align="center">累计浏览</td></tr>
+          <tr><td align="center"><%=@activity.traffic.to_i%></td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr><td colspan=3>&nbsp;</td></tr>
+  </table>
 </div>
-<div class="weui-btn-area">
-  <%=link_to "我要参加", new_activity_photograph_path(@activity), class:"weui-btn weui-btn_primary"%>
+<div class="weui-btn-area" id="countdown" style="padding:30px;">
+  <table style="width:100%;" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" colspan=2>&nbsp;</td>
+      <td align="center" colspan=2 rowspan=2>距离活动结束还有</td>
+      <td align="center" colspan=2>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" colspan=2 style="border-top:solid 1px gray;border-left:solid 1px gray;">&nbsp;</td>
+      <td align="center" colspan=2 style="border-top:solid 1px gray;border-right:solid 1px gray;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" style="border-bottom:solid 1px gray;border-left:solid 1px gray;">&nbsp;</td>
+      <td align="center" rowspan=2>
+        <table>
+          <tr>
+            <td><a id="d1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td><a id="d2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td>天</td>
+          </tr>
+        </table>
+      </td>
+      <td align="center" rowspan=2>
+        <table>
+          <tr>
+            <td><a id="h1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td><a id="h2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td>时</td>
+          </tr>
+        </table>
+      </td>
+      <td align="center" rowspan=2>
+        <table>
+          <tr>
+            <td><a id="m1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td><a id="m2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td>分</td>
+          </tr>
+        </table>
+      </td>
+      <td align="center" rowspan=2>
+        <table>
+          <tr>
+            <td><a id="s1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td><a id="s2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
+            <td>秒</td>
+          </tr>
+        </table>
+      </td>
+      <td align="center" style="border-bottom:solid 1px gray;border-right:solid 1px gray;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center">&nbsp;</td>
+      <td align="center">&nbsp;</td>
+    </tr>
+  </table>
+  </br>
+  <%=link_to "我要报名", new_activity_photograph_path(@activity), class:"weui-btn weui-btn_primary", style:"color:#f5d09d;"%>
 </div>
 
-<div id="searchBar" class="weui-search-bar">
-  <form class="weui-search-bar__form">
-    <div class="weui-search-bar__box">
-      <i class="weui-icon-search"></i>
-      <input id="searchInput" class="weui-search-bar__input" placeholder="搜索" required="" type="search">
-      <a id="searchClear" class="weui-icon-clear" href="javascript:"></a>
-    </div>
-    <label id="searchText" class="weui-search-bar__label">
-      <i class="weui-icon-search"></i>
-      <span>搜索</span>
-    </label>
-  </form>
-  <a id="searchCancel" class="weui-search-bar__cancel-btn" href="javascript:">取消</a>
-</div>
-
-<div class="row">
-  <%@photographs.each do |photograph|%>
-    <article class="weui-article">
-      <h1><%=photograph.name%></h1>
-      <section>
-        <h2 class="title">当前票数:<span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span></h2>
-        <%=link_to "/show/#{photograph.id}" do %>
-          <%=image_tag photograph.cover_url %>
+<div class="wcpc_content">
+  <%2.times do |i|%>
+    <div style="width:50%;float:left;">
+      <%@photographs.to_a.each_index do |index|%>
+        <%photograph = @photographs[index]%>
+        <%if (index%2)==i%>
+          <article class="weui-article" style="padding:5px;">
+            <section>
+              <%=link_to "/show/#{photograph.id}" do %>
+                <%=image_tag photograph.cover_url %>
+              <%end%>
+            </section>
+            <section>
+                <div class="weui-media-box__bd" style="padding:20px;">
+                  <%avatar_url = photograph.user.avatar.present? ? photograph.user.avatar : ""%>
+                  <%=image_tag avatar_url, width:80, height:80, align:"right", style:"border-radius:50%;" %>
+                  <%=link_to "投票", vote_activity_photograph_path(@activity,photograph), remote:true %>
+                  <span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span>
+                  <h1>#<%=photograph.name%></h1>
+                  <h2 style="color:gray;"><%=photograph.intro[0,20]%>...</h2>
+              </a>
+            </section>
+          </article>
         <%end%>
-      </section>
-    </article>
-    <div class="weui-btn-area">
-      <%=link_to "投票", vote_activity_photograph_path(@activity,photograph), remote:true, class:"weui-btn weui-btn_primary" %>
+      <%end%>
     </div>
   <%end%>
-  <%= will_paginate @photographs %>
+  <div style="float:left;width:100%;">
+    <%= will_paginate @photographs %>
+  </div>
+
 </div>
+<script>
+  $(function(){
+    setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%=@activity.terminate_time.day%>);}, 1000);
+  });
+</script>

@@ -22,6 +22,54 @@ $(function(){
   });
 });
 
+function ShowCountDown(year,month,day)
+{
+  var now = new Date();
+  var endDate = new Date(year, month-1, day);
+  var leftTime=endDate.getTime()-now.getTime();
+  var leftsecond = parseInt(leftTime/1000);
+  var day=Math.floor(leftsecond/(60*60*24));
+  var hour=Math.floor((leftsecond-day*24*60*60)/3600);
+  var minute=Math.floor((leftsecond-day*24*60*60-hour*3600)/60);
+  var second=Math.floor(leftsecond-day*24*60*60-hour*3600-minute*60);
+  if(day<10){
+    var d1= "0";
+    var d2= day.toString().substr(0,1);
+  }else{
+    var d1= day.toString().substr(0,1);
+    var d2= day.toString().substr(1,1);
+  }
+  if(hour<10){
+    var h1= "0";
+    var h2= hour.toString().substr(0,1);
+  }else{
+    var h1= hour.toString().substr(0,1);
+    var h2= hour.toString().substr(1,1);
+  }
+  if(minute<10){
+    var m1= "0";
+    var m2= minute.toString().substr(0,1);
+  }else{
+    var m1= minute.toString().substr(0,1);
+    var m2= minute.toString().substr(1,1);
+  }
+  if(second<10){
+    var s1= "0";
+    var s2= second.toString().substr(0,1);
+  }else{
+    var s1= second.toString().substr(0,1);
+    var s2= second.toString().substr(1,1);
+  }
+  $("#d1").html(d1);
+  $("#d2").html(d2);
+  $("#h1").html(h1);
+  $("#h2").html(h2);
+  $("#m1").html(m1);
+  $("#m2").html(m2);
+  $("#s1").html(s1);
+  $("#s2").html(s2);
+}
+
 function preview_photo(file,index){
   var MAXWIDTH  = 80;
   var MAXHEIGHT = 80;

@@ -5,7 +5,8 @@
   <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>weui-bar__item_on<%end%>" href="/works">
     <p class="weui-tabbar__label">作品</p>
   </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>weui-bar__item_on<%end%>" href="/activities/<%=@activity.id%>/photographs/new.html">
+  <a class="weui-tabbar__item <%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>weui-bar__item_on<%end%>"
+    <%unless @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>href="/activities/<%=@activity.id%>/photographs/new.html" <%else%>href="#" onclick="$('.weui-dialog__bd').html('您已经参加过活动啦!');$('#iosDialog2').fadeIn(200);"<%end%>>
     <p class="weui-tabbar__label">上传</p>
   </a>
   <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>weui-bar__item_on<%end%>" href="/review">
