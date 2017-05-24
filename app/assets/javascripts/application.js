@@ -21,11 +21,15 @@ $(function(){
     $(this).parents('.js_dialog').fadeOut(200);
   });
 
+  var img_width=751;
+  var img_height=501;
+  var avatar_radius=50;
+  var window_width = $(window).width();
+  var footer_width = Math.floor(window_width/5);
+  $(".footer_on").css("width",footer_width+"px")
+  $(".footer_off").css("width",footer_width+"px")
+
   if($("#cover").length>0){
-    var img_width=751;
-    var img_height=501;
-    var avatar_radius=50;
-    var window_width = $(window).width();
     var height = Math.floor((window_width*501)/751);
     $("#cover").css("width",window_width+"px");
     $("#cover").css("height",height+"px");
@@ -45,8 +49,37 @@ $(function(){
     $("#cards").show();
   });
 
+  $("#photograph_name").on('keydown', function(){
+    refresh_rest("photograph_name", "name_rest", 15)
+  });
+
+  $("#photograph_intro").on('keydown', function(){
+    refresh_rest("photograph_intro", "intro_rest", 60)
+  });
+
+  $(".photo_item").on("swipeleft",function(){
+    alert("You swiped left!");
+    if($(this).prev()){
+      $(this).hide();
+      $(this).prev().show();
+    }
+  });
+
+  $(".photo_item").on("swiperight",function(){
+    alert("You swiped right!");
+    if($(this).next()){
+      $(this).hide();
+      $(this).next().show();
+    }
+  });
 
 });
+
+function refresh_rest(input_id, rest_id, total){
+  var input = $("#"+input_id).val();
+  var rest = total - input.length;
+  $("#"+rest_id).html('（剩余'+rest+'字符）');
+}
 
 function ShowCountDown(year,month,day)
 {

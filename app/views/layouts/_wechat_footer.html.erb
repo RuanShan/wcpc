@@ -1,18 +1,27 @@
 <div class="weui-tabbar">
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' && params[:action] == 'index'%>weui-bar__item_on<%end%>" href="/">
-    <p class="weui-tabbar__label">首页</p>
-  </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>weui-bar__item_on<%end%>" href="/works">
-    <p class="weui-tabbar__label">作品</p>
-  </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>weui-bar__item_on<%end%>"
-    <%unless @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>href="/activities/<%=@activity.id%>/photographs/new.html" <%else%>href="#" onclick="$('.weui-dialog__bd').html('您已经参加过活动啦!');$('#iosDialog2').fadeIn(200);"<%end%>>
-    <p class="weui-tabbar__label">上传</p>
-  </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>weui-bar__item_on<%end%>" href="/review">
-    <p class="weui-tabbar__label">追溯</p>
-  </a>
-  <a class="weui-tabbar__item <%if params[:controller] == 'visitors' &&  params[:action] == 'my_account'%>weui-bar__item_on<%end%>" href="/my_account">
-    <p class="weui-tabbar__label">我的</p>
-  </a>
+    <%=link_to "/" do %>
+      <div align="center" class="<%if params[:controller] == 'visitors' && params[:action] == 'index'%>footer_on<%else%>footer_off<%end%>">
+        <%=fa_icon "home"%></br>首页
+      </div>
+    <%end%>
+    <a href="/works">
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>footer_on<%else%>footer_off<%end%>">
+        <%=fa_icon "photo"%></br>作品
+      </div>
+    </a>
+    <a <%unless @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>href="/activities/<%=@activity.id%>/photographs/new.html" <%else%>href="#" onclick="$('.weui-dialog__bd').html('您已经参加过活动啦!');$('#iosDialog2').fadeIn(200);"<%end%>>
+      <div align="center" class="<%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>footer_on<%else%>footer_off<%end%>">
+        <%=fa_icon "upload"%></br>上传
+      </div>
+    </a>
+    <a href="/review">
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>footer_on<%else%>footer_off<%end%>">
+        <%=fa_icon "backward"%></br>追溯
+      </div>
+    </a>
+    <a href="/my_account">
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'my_account'%>footer_on<%else%>footer_off<%end%>">
+        <%=fa_icon "user"%></br>我的
+      </div>
+    </a>
 </div>

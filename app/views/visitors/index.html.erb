@@ -1,6 +1,9 @@
 <article class="weui-article">
-  <h1><%=@shop.name%></h1>
   <section>
-    <p><%=raw @shop.intro%></p>
+    <%3.times do |index|%>
+    <p class="photo_item" <% if index > 0%>style="display:none;"<%end%>>
+      <%=image_tag "poster"+(index+1).to_s+".jpg"%>
+    </p>
+    <%end%>
   </section>
 </article>

@@ -1,10 +1,35 @@
 @import "weui";
+@import "font-awesome";
+
 .weui-tab{
   background-color: #e8e8e8;
 }
+
+.weui-cells{
+  background-color: #e8e8e8;
+}
+.weui-input{
+  background-color: #e8e8e8;
+  border: solid 1px #d9d9d9;
+}
+.weui-textarea{
+  background-color: #e8e8e8;
+  border: solid 1px #d9d9d9;
+}
+
 .weui-btn_primary {
     background-color: #006934;
     color: #f3d4a1;
+}
+
+.footer_on{
+  background-color: #f3d4a1;
+  color: #006934;
+}
+
+.footer_off{
+  background-color: #006934;
+  color: #f3d4a1;
 }
 
 .countdown{

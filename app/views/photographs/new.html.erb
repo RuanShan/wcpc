@@ -1,62 +1,72 @@
-<div class="weui-cells__title"><h2>上传您的作品</h2> </div>
-<div>
+<div id="cover" style="width:100%;">
+  <%=image_tag "cover.jpg", style:"width:100%;" %>
+</div>
+<center>
+  <div style="background-color:#006934;color:#f3d4a1;margin:15px 0;padding:10px 0;width:90%;text-align:center;">
+    <h4>上传图片</h4>
+  </div>
+
+<div style="width:90%;">
   <%= form_for(@photograph, url: {:action=>"create"} ) do |f| %>
+    <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
+      <div class="weui-cell__hd">
+        <%= f.label :photo, class:"weui-label", style:"text-align:left;" %>
+      </div>
+    </div>
+    <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
+      <div id="photos_div" class="weui-cell__bd">
+        <%= f.fields_for :photos do |photos_form| %>
+          <div id="wrapper_div<%=photos_form.index%>" class="wrapper_div">
+            <div id="photodiv<%=photos_form.index%>" class="weui-uploader__file" style="display:none;">
+              <%=link_to nil, href:"#", onclick:"delete_photo(#{photos_form.index});" do %>
+                <i class="weui-icon-cancel" style="margin-left: 50px;"></i>
+              <% end %>
+              <div style="margin-top:-25px;float:left;">
+                <%=image_tag "pic_160.png", id:"photo#{photos_form.index}", width:"80", height:"80"%>
+              </div>
+            </div>
+            <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% if photos_form.index > 0 %> style="display:none;"<%end%>>
+              <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
+            </div>
+          </div>
+        <% end %>
+        <%if @photograph.errors.include?(:photos)%>请至少上传一张图片，格式为jpg, jpeg, png或gif<%end%>
+      </div>
+    </div>
+    <div class="weui-cells__tips" style="text-align:left;">温馨提示：</br>最多可上传5张。建议您上传未经社交软件压缩过的原图，否则可能读取不到照片的参数而造成不能成功上传。</div>
 
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell <%if @photograph.errors.include?(:name)%>weui-cell_warn<%end%>">
         <div class="weui-cell__hd">
-          <%= f.label :name, class:"weui-label" %>
+          <%= f.label :name, class:"weui-label", style:"text-align:left;" %>
         </div>
+      </div>
+      <div class="weui-cell <%if @photograph.errors.include?(:name)%>weui-cell_warn<%end%>">
         <div class="weui-cell__bd">
-          <%= f.text_field :name, class:"weui-input", placeholder:@photograph.errors.messages[:name][0] %>
+          <%name_ph = @photograph.errors.size > 0 ? @photograph.errors.messages[:name][0] : "限15字符"%>
+          <%= f.text_field :name, class:"weui-input", placeholder: name_ph%>
+        </div>
+      </div>
+      <div id="name_rest" class="weui-cells__tips" style="text-align:left;">（剩余15字符）</div>
+      <div class="weui-cell <%if @photograph.errors.include?(:intro)%>weui-cell_warn<%end%>">
+        <div class="weui-cell__hd">
+          <%= f.label :intro, class:"weui-label", style:"text-align:left;" %>
         </div>
       </div>
       <div class="weui-cell <%if @photograph.errors.include?(:intro)%>weui-cell_warn<%end%>">
-        <div class="weui-cell__hd">
-          <%= f.label :intro, class:"weui-label" %>
-        </div>
         <div class="weui-cell__bd">
-          <%= f.text_area :intro, class:"weui-textarea", placeholder:@photograph.errors.messages[:intro][0] %>
+          <%intro_ph = @photograph.errors.size > 0 ? @photograph.errors.messages[:intro][0] : "限60字符"%>
+          <%= f.text_area :intro, class:"weui-textarea", placeholder:intro_ph, rows:"5" %>
         </div>
       </div>
-      <div class="weui-cell <%if @photograph.errors.include?(:manifesto)%>weui-cell_warn<%end%>">
-        <div class="weui-cell__hd">
-          <%= f.label :manifesto, class:"weui-label" %>
-        </div>
-        <div class="weui-cell__bd">
-          <%= f.text_area :manifesto, class:"weui-textarea", placeholder:@photograph.errors.messages[:manifesto][0] %>
-        </div>
-      </div>
+      <div id="intro_rest" class="weui-cells__tips" style="text-align:left;">（剩余60字符）</div>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :activity_id %>
 
-      <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
-        <div class="weui-cell__hd">
-          <%= f.label :photo, class:"weui-label" %>
-        </div>
-        <div id="photos_div" class="weui-cell__bd">
-          <%= f.fields_for :photos do |photos_form| %>
-            <div id="wrapper_div<%=photos_form.index%>" class="wrapper_div">
-              <div id="photodiv<%=photos_form.index%>" class="weui-uploader__file" style="display:none;">
-                <%=link_to nil, href:"#", onclick:"delete_photo(#{photos_form.index});" do %>
-                  <i class="weui-icon-cancel" style="margin-left: 50px;"></i>
-                <% end %>
-                <div style="margin-top:-25px;float:left;">
-                  <%=image_tag "pic_160.png", id:"photo#{photos_form.index}", width:"80", height:"80"%>
-                </div>
-              </div>
-              <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% if photos_form.index > 0 %> style="display:none;"<%end%>>
-                <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
-              </div>
-            </div>
-          <% end %>
-          <%if @photograph.errors.include?(:photos)%>请至少上传一张图片，格式为jpg, jpeg, png或gif<%end%>
-        </div>
-      </div>
-      <div class="weui-cells__tips">最多可上传5张</div>
       <div class="weui-btn-area">
-        <%= f.submit "提交", class:"weui-btn weui-btn_primary" %>
+        <%= f.submit "确定发布", class:"weui-btn weui-btn_primary" %>
       </div>
     </div>
   <% end %>
 </div>
+</center>

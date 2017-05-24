@@ -7,7 +7,9 @@ class Photograph < ApplicationRecord
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   accepts_nested_attributes_for :photos, allow_destroy: true
 
-  validates :name, :intro, :manifesto, :photos, presence: true
+  validates :photos, presence: true
+  validates :name, length: { in: 1..15 }
+  validates :intro, length: { in: 1..60 }
 
   after_create :get_card
 
