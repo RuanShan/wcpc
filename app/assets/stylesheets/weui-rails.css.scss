@@ -1,15 +1,17 @@
 @import "weui";
-
+.weui-tab{
+  background-color: #e8e8e8;
+}
 .weui-btn_primary {
-    background-color: #016934;
-    color: #f5d09d;
+    background-color: #006934;
+    color: #f3d4a1;
 }
 
 .countdown{
   float:left;
-  margin:5px;
-  padding:0 10px;
-  width:30px;
+  margin:2px;
+  padding:0 2px;
+  width:20px;
   color:white;
 }
 
@@ -19,8 +21,11 @@
 }
 
 .wcpc_content {
-  background-color: #e8e8e8;
-  padding:5px;
   float:left;
   margin-bottom:20px;
+  width:100%;
+}
+
+.round {
+  border-radius:50%;
 }

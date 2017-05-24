@@ -12,6 +12,8 @@ class VisitorsController < ApplicationController
   end
 
   def my_account
+    @photograph = @activity.photographs.select{|p|p.user_id==@current_wechat_user.id}.first
+    @card = Card.first
   end
 
   def show

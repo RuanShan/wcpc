@@ -9,4 +9,8 @@ class Card < ApplicationRecord
   def duration
     start_date.strftime("%Y.%m.%d")+"——"+end_date.strftime("%Y.%m.%d")
   end
+
+  def outer_url
+    url ? url : ""
+  end
 end

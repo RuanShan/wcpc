@@ -45,7 +45,7 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:name, :origin, :start_date, :end_date)
+    params.require(:card).permit(:name, :origin, :url, :start_date, :end_date)
   end
 
   def set_card

@@ -20,6 +20,32 @@ $(function(){
   $('#iosDialog2').on('click', '.weui-dialog__btn', function(){
     $(this).parents('.js_dialog').fadeOut(200);
   });
+
+  if($("#cover").length>0){
+    var img_width=751;
+    var img_height=501;
+    var avatar_radius=50;
+    var window_width = $(window).width();
+    var height = Math.floor((window_width*501)/751);
+    $("#cover").css("width",window_width+"px");
+    $("#cover").css("height",height+"px");
+    $("#cover_table").css("padding-top",(height-avatar_radius)+"px");
+  }
+
+  $("#my_work").on('click', function(){
+    $(this).css('border-bottom-width','2px');
+    $("#my_card").css('border-bottom-width','1px');
+    $("#works").show();
+    $("#cards").hide();
+  });
+  $("#my_card").on('click', function(){
+    $(this).css('border-bottom-width','2px');
+    $("#my_work").css('border-bottom-width','1px');
+    $("#works").hide();
+    $("#cards").show();
+  });
+
+
 });
 
 function ShowCountDown(year,month,day)
