@@ -8,12 +8,12 @@
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
-shop = Shop.create(name:'请填写企业名称', intro:'')
+shop = Shop.create!(name:'请填写企业名称', intro:'企业介绍哦')
 puts 'CREATED SHOP 1'
 
-activity = Activity.create(
+activity = Activity.create!(
   name:'请填写活动名称',
-  intro:'',
+  intro:'活动介绍哦',
   traffic:0,
   start_time:DateTime.current,
   terminate_time:DateTime.current.since(1.month),
