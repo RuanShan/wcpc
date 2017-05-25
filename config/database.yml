@@ -22,4 +22,5 @@ test:
 
 production:
   <<: *default
+  pool: 50
   database: db/production.sqlite3
