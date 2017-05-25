@@ -10,6 +10,5 @@ end
 
 Paperclip.interpolates :aliyun_style do |attachment, style_name|
   #需要阿里云设置相应服务样式
-  style_name||='default'
-  '?x-oss-process=style/'+style_name
+  '/'+(style_name||'default'）
 end
