@@ -9,7 +9,7 @@ Paperclip.interpolates :aliyun_host do |attachment, style_name|
 end
 
 Paperclip.interpolates :aliyun_style do |attachment, style_name|
-  case style_name.to_sym
+  case style_name
     when :px400
       '?x-oss-process=style/'+style_name
     else
