@@ -1,9 +1,13 @@
 <article class="weui-article">
-  <section>
+  <div id="myCarousel" class="carousel slide" >
+    <!-- 轮播（Carousel）指标 -->
+
+  <section class="carousel-inner">
     <%3.times do |index|%>
-    <p class="photo_item" <% if index > 0%>style="display:none;"<%end%>>
-      <%=image_tag "poster"+(index+1).to_s+".jpg"%>
+    <p class="photo_item item" <% if index > 0%>style="display:none;"<%end%>>
+      <%=image_tag "poster"+(index+1).to_s+".jpg", class: "d-block img-fluid"%>
     </p>
     <%end%>
   </section>
+  </div>
 </article>

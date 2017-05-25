@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_page_view
   wechat_api
 
+
   protected
 
   def configure_permitted_parameters
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_wechat_user
-    #@current_wechat_user = User.find(3)
+    #@current_wechat_user = User.find(1)
     wechat_oauth2("snsapi_userinfo") do |openid,other_info|
       user_info = Wechat.api.web_userinfo(other_info["access_token"],other_info["openid"])
       logger.debug "user_info=#{user_info.inspect}"
@@ -36,5 +37,6 @@ class ApplicationController < ActionController::Base
       @current_wechat_user.update_info(user_info)
     end
   end
+
 
 end

@@ -57,22 +57,22 @@ $(function(){
     refresh_rest("photograph_intro", "intro_rest", 60)
   });
 
-  $(".photo_item").on("swipeleft",function(){
-    alert("You swiped left!");
-    if($(this).prev()){
-      $(this).hide();
-      $(this).prev().show();
-    }
-  });
+  //$(".photo_item").on("swipeleft",function(){
+  //  alert("You swiped left!");
+  //  if($(this).prev()){
+  //    $(this).hide();
+  //    $(this).prev().show();
+  //  }
+  //});
 
-  $(".photo_item").on("swiperight",function(){
-    alert("You swiped right!");
-    if($(this).next()){
-      $(this).hide();
-      $(this).next().show();
-    }
-  });
-
+  //$(".photo_item").on("swiperight",function(){
+  //  alert("You swiped right!");
+  //  if($(this).next()){
+  //    $(this).hide();
+  //    $(this).next().show();
+  //  }
+  //});
+  $("#myCarousel").carousel('cycle');
 });
 
 function refresh_rest(input_id, rest_id, total){
