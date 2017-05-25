@@ -10,6 +10,11 @@ end
 
 Paperclip.interpolates :aliyun_style do |attachment, style_name|
   #需要阿里云设置相应服务样式
-  style_name ||= :default
-  '/'+style_name.to_s
+  # style_name could be nil/sym/sytring
+  case style_name
+    when :original
+      ''
+    else      
+      "/#{style_name|| 'default'}"
+  end
 end
