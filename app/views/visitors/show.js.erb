@@ -1,0 +1,7 @@
+$("#share_photo_url").val("<%=asset_url(@photograph.photos[0].photo.url(:thumb))%>");
+//alert($("#share_photo_url").val())
+$.modal({
+  title: "<%@photograph.user.nickname%>的作品",
+  text: <%== ( render :partial => 'show',:formats=>[:html] ).to_json %>,
+  buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
+});

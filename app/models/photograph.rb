@@ -13,7 +13,10 @@ class Photograph < ApplicationRecord
 
   after_create :get_card
 
+  cattr_accessor :upload_limit
+
   self.per_page = 6
+  self.upload_limit = 1
 
   def cover_url(psize=nil)
     return photos.first.photo.url(psize)

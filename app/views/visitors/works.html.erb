@@ -86,7 +86,25 @@
   </br>
   <%=link_to "我要报名", new_activity_photograph_path(@activity), class:"weui-btn weui-btn_primary", style:"color:#f3d4a1;"%>
 </div>
-
+<table class="activity_info" width="100%">
+  <tr>
+    <td><%=fa_icon "clock-o", text:@activity.duration %>
+  </tr>
+  <tr>
+    <td>
+      <%=link_to intro_path, remote:true do%>
+        <%=fa_icon "file-text-o", text:"活动介绍" %>
+      <%end%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%=link_to ranking_path, remote:true do%>
+        <%=fa_icon "navicon", text:"投票排名" %>
+      <%end%>
+    </td>
+  </tr>
+</table>
 <div class="wcpc_content">
   <%2.times do |i|%>
     <div style="width:50%;float:left;">
@@ -95,7 +113,7 @@
         <%if (index%2)==i%>
           <article class="weui-article" style="padding:5px;">
             <section>
-              <%=link_to "/show/#{photograph.id}" do %>
+              <%=link_to "/show/#{photograph.id}", remote:true do %>
                 <%=image_tag photograph.cover_url %>
               <%end%>
             </section>

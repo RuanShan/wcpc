@@ -29,12 +29,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_wechat_user
-    #@current_wechat_user = User.find(1)
+    #@current_wechat_user = User.find(3)
     wechat_oauth2("snsapi_userinfo") do |openid,other_info|
-      user_info = Wechat.api.web_userinfo(other_info["access_token"],other_info["openid"])
+      user_info = Wechat.api.user(other_info["openid"])
       logger.debug "user_info=#{user_info.inspect}"
       @current_wechat_user = User.find_or_create_by(uid: openid)
       @current_wechat_user.update_info(user_info)
+      if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
+        redirect_to "/subscribe"
+      end
     end
   end
 

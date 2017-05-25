@@ -1,4 +1,5 @@
 @import "weui";
+@import "jquery-weui";
 @import "swiper.min";
 @import "font-awesome";
 
@@ -23,14 +24,58 @@
     color: #f3d4a1;
 }
 
+.weui-dialog{
+  max-width:500px;
+  position:absolute;
+  top:80%;
+}
 .footer_on{
-  background-color: #f3d4a1;
+/*  background-color: #f3d4a1;*/
+background-repeat: no-repeat;
+background-size: 100%;
+  text-align:center;
   color: #006934;
 }
 
 .footer_off{
-  background-color: #006934;
+  /* background-color: #006934;*/
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align:center;
   color: #f3d4a1;
+}
+.footer_text{
+  font-size:0.5em;
+}
+.home_on{
+  background-image:url("home_on.jpg")
+}
+.home_off{
+  background-image:url("home_off.jpg")
+}
+.work_on{
+  background-image:url("work_on.jpg")
+}
+.work_off{
+  background-image:url("work_off.jpg")
+}
+.upload_on{
+  background-image:url("upload_on.jpg")
+}
+.upload_off{
+  background-image:url("upload_off.jpg")
+}
+.back_on{
+  background-image:url("back_on.jpg")
+}
+.back_off{
+  background-image:url("back_off.jpg")
+}
+.account_on{
+  background-image:url("account_on.jpg")
+}
+.account_off{
+  background-image:url("account_off.jpg")
 }
 
 .countdown{
@@ -60,4 +105,29 @@
 
   top:auto;
   bottom: 0;
+}
+
+.swiper-pagination-bullet{
+  border-radius:0;
+  width:100px;
+  height:5px;
+  background:#006934 none repeat scroll 0 0;
+  opacity:1;
+}
+.swiper-pagination-bullet-active{
+  background:#f3d4a1 none repeat scroll 0 0;
+  opacity:1;
+}
+
+.ranking_table {
+  padding: 10px;
+  border-bottom:2px solid #006934;
+}
+table.activity_info td{
+  padding:5px 10px;
+  background-color:white;
+}
+
+table.activity_info a{
+  color:black;
 }

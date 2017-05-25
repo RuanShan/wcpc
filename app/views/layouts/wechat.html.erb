@@ -12,9 +12,9 @@
     <script type="application/javascript">
       window.share_config = {
            "share": {
-              "imgUrl": "",//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。
+              "imgUrl": $('#share_photo_url').val(),//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。
               "desc" : "<%= @activity.intro.gsub(/<\/?.*?>/,'')%>",//摘要,如果分享到朋友圈的话，不显示摘要。
-              "title" : "我是<%=@current_wechat_user.nickname%>正在参加<%=@activity.name%>活动",//分享卡片标题
+              "title" : "快来看！<%=@current_wechat_user.nickname%>分享了一张人气作品，要你共同参与及点赞，品味人像摄影",//分享卡片标题
               "link": "<%=root_url%>",//window.location.href,分享出去后的链接，这里可以将链接设置为另一个页面。
               "success":function(){//分享成功后的回调函数
               },
@@ -31,6 +31,7 @@
     </script>
 </head>
 <body ontouchstart>
+  <%=hidden_field_tag "share_photo_url", ""%>
   <div style="position:absolute;bottom:0;top:0;left:0;right:0;">
     <div class="weui-tab">
       <div class="weui-tab__panel">
@@ -47,6 +48,13 @@
         </div>
       </div>
     </div>
+    <div id="wcpc_popup" class="weui-popup__container">
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+
+      </div>
+    </div>
+
   </div>
 </body>
 </html>

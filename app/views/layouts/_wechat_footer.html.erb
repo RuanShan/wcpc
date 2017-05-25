@@ -1,27 +1,29 @@
-<div class="weui-tabbar">
+<% if params[:action] != "subscribe" %>
+  <div class="weui-tabbar">
     <%=link_to "/" do %>
-      <div align="center" class="<%if params[:controller] == 'visitors' && params[:action] == 'index'%>footer_on<%else%>footer_off<%end%>">
-        <%=fa_icon "home"%></br>首页
+      <div align="center" class="<%if params[:controller] == 'visitors' && params[:action] == 'index'%>footer_on home_on<%else%>footer_off home_off<%end%>">
+        <div class="footer_text">首页</div>
       </div>
     <%end%>
-    <a href="/works">
-      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>footer_on<%else%>footer_off<%end%>">
-        <%=fa_icon "photo"%></br>作品
+    <%=link_to "/works" do %>
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'works'%>footer_on work_on<%else%>footer_off work_off<%end%>">
+        <div class="footer_text">作品</div>
       </div>
-    </a>
-    <a <%unless @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>href="/activities/<%=@activity.id%>/photographs/new.html" <%else%>href="#" onclick="$('.weui-dialog__bd').html('您已经参加过活动啦!');$('#iosDialog2').fadeIn(200);"<%end%>>
-      <div align="center" class="<%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>footer_on<%else%>footer_off<%end%>">
-        <%=fa_icon "upload"%></br>上传
+    <%end%>
+    <%=link_to new_activity_photograph_path(@activity), remote:true do %>
+      <div align="center" class="<%if params[:controller] == 'photographs' &&  params[:action] == 'new'%>footer_on upload_on<%else%>footer_off upload_off<%end%>">
+        <div class="footer_text">上传</div>
       </div>
-    </a>
-    <a href="/review">
-      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>footer_on<%else%>footer_off<%end%>">
-        <%=fa_icon "backward"%></br>追溯
+    <%end%>
+    <%=link_to "/review" do %>
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'review'%>footer_on back_on<%else%>footer_off back_off<%end%>">
+        <div class="footer_text">追溯</div>
       </div>
-    </a>
-    <a href="/my_account">
-      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'my_account'%>footer_on<%else%>footer_off<%end%>">
-        <%=fa_icon "user"%></br>我的
+    <%end%>
+    <%=link_to "/my_account" do %>
+      <div align="center" class="<%if params[:controller] == 'visitors' &&  params[:action] == 'my_account'%>footer_on account_on<%else%>footer_off account_off<%end%>">
+        <div class="footer_text">我的</div>
       </div>
-    </a>
-</div>
+    <%end%>
+  </div>
+<%end%>

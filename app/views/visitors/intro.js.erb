@@ -1,0 +1,5 @@
+$.modal({
+  title: "活动介绍",
+  text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
+  buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
+});

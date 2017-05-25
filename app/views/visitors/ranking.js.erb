@@ -1,0 +1,5 @@
+$.modal({
+  title: "投票排名",
+  text: <%== ( render :partial => 'ranking',:formats=>[:html] ).to_json %>,
+  buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
+});

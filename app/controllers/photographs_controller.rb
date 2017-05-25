@@ -23,7 +23,7 @@ class PhotographsController < ApplicationController
     if @photograph.persisted?
       redirect_to "/show/#{@photograph.id}"
     else
-      5.times { @photograph.photos.build}
+      Photograph.upload_limit.times { @photograph.photos.build}
     end
   end
 
@@ -34,7 +34,7 @@ class PhotographsController < ApplicationController
       redirect_to "/show/#{@photograph.id}"
     else
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"
-      (5-@photograph.photos.size).times { @photograph.photos.build}
+      (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
       render :new
     end
 
@@ -44,7 +44,7 @@ class PhotographsController < ApplicationController
   end
 
   def edit
-    (5-@photograph.photos.size).times { @photograph.photos.build}
+    (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
   end
 
   def update
@@ -54,7 +54,7 @@ class PhotographsController < ApplicationController
       redirect_to activity_photograph_path(@activity,@photograph)
     else
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"
-      (5-@photograph.photos.size).times { @photograph.photos.build}
+      (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
       render :edit
     end
   end

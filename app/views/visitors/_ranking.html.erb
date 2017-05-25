@@ -1,0 +1,24 @@
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__bd">
+    <%page = params[:page].present? ? params[:page].to_i : 1%>
+    <%rank = (page-1) * Photograph.per_page + 1%>
+    <table style="width:100%;" cellpadding="0" cellspacing="0">
+      <tr style="background-color: #006934;color: #f3d4a1;">
+        <td class="ranking_table">排行</td>
+        <td class="ranking_table">名称</td>
+        <td class="ranking_table">票数</td>
+      </tr>
+    <%@photographs.each do |photograph|%>
+      <tr>
+        <td class="ranking_table"><b><%= rank%></b></td>
+        <td class="ranking_table"><b><%= photograph.name%></b></td>
+        <td class="ranking_table"><b><%= photograph.vote_numbers.to_i%></b></td>
+      </tr>
+      <%rank +=1%>
+    <%end%>
+    </table>
+  </div>
+  <div class="weui-panel__ft">
+    <%= will_paginate @photographs %>
+  </div>
+</div>

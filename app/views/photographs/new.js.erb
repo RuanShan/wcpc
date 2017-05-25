@@ -1,0 +1,10 @@
+<%if @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>
+  $.alert("您已经参加过活动啦");
+<%else%>
+
+  $.modal({
+    title: "上传图片",
+    text: <%== ( render :partial => 'new',:formats=>[:html] ).to_json %>,
+    buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} }]
+  });
+<%end%>

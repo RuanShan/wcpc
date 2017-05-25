@@ -11,6 +11,9 @@ class VisitorsController < ApplicationController
   def review
   end
 
+  def subscribe
+  end
+
   def my_account
     @photograph = @activity.photographs.select{|p|p.user_id==@current_wechat_user.id}.first
     @card = Card.first
@@ -24,6 +27,9 @@ class VisitorsController < ApplicationController
     @photographs = @activity.photographs.order("vote_numbers desc").paginate(:page => params[:page])
   end
 
+  def intro
+  end
+  
   private
 
 

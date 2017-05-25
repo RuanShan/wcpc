@@ -26,8 +26,13 @@ $(function(){
   var avatar_radius=50;
   var window_width = $(window).width();
   var footer_width = Math.floor(window_width/5);
+  var footer_height = Math.floor((footer_width*108)/151);
+  var footer_text_top = Math.floor(footer_height*3/4);
   $(".footer_on").css("width",footer_width+"px")
+  $(".footer_on").css("height",footer_height+"px")
   $(".footer_off").css("width",footer_width+"px")
+  $(".footer_off").css("height",footer_height+"px")
+  $(".footer_text").css("padding-top",footer_text_top+"px")
 
   if($("#cover").length>0){
     var height = Math.floor((window_width*501)/751);
