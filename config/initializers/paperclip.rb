@@ -9,12 +9,7 @@ Paperclip.interpolates :aliyun_host do |attachment, style_name|
 end
 
 Paperclip.interpolates :aliyun_style do |attachment, style_name|
-  case style_name
-    when :px400
-      '?x-oss-process=style/'+style_name
-    else
-      # 缺省使用原图
-      ''
-  end
-
+  #需要阿里云设置相应服务样式
+  style_name||='default'
+  '?x-oss-process=style/'+style_name
 end
