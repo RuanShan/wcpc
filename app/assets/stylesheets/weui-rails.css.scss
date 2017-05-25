@@ -56,8 +56,16 @@
   border-radius:50%;
 }
 
-.main .swiper-pagination{
+.main .swiper-pagination.swiper-pagination-clickable{
 
   top:auto;
   bottom: 0;
+  .swiper-pagination-bullet
+  {
+    background-color: #006934;
+  }
+  .swiper-pagination-bullet-active
+  {
+    background-color: #f3d4a1;
+  }
 }
