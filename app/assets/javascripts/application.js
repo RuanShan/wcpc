@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tether
-//= require bootstrap-sprockets
+// require bootstrap-sprockets
 //= require_tree .
 
 $(function(){
@@ -72,7 +72,15 @@ $(function(){
   //    $(this).next().show();
   //  }
   //});
-  $("#myCarousel").carousel('cycle');
+  $(".swiper-container").swiper(
+    {
+      pagination: '.swiper-pagination',
+      paginationType: 'bullets',
+      paginationClickable: true,
+      //autoplay: true,
+      loop: true
+    }
+  );
 });
 
 function refresh_rest(input_id, rest_id, total){

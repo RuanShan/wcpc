@@ -1,13 +1,13 @@
-<article class="weui-article">
-  <div id="myCarousel" class="carousel slide" >
-    <!-- 轮播（Carousel）指标 -->
+<article class="weui-article main">
+  <div class="swiper-container" >
+    <section class="swiper-wrapper">
+      <%3.times do |index|%>
+      <p class="photo_item swiper-slide">
+        <%=image_tag "poster"+(index+1).to_s+".jpg"%>
+      </p>
+      <%end%>
+    </section>
+   <div class="swiper-pagination"></div>
 
-  <section class="carousel-inner">
-    <%3.times do |index|%>
-    <p class="photo_item item" <% if index > 0%>style="display:none;"<%end%>>
-      <%=image_tag "poster"+(index+1).to_s+".jpg", class: "d-block img-fluid"%>
-    </p>
-    <%end%>
-  </section>
   </div>
 </article>
