@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :direct_message_box
     end
   end
+
   root to: 'visitors#index'
   #get '/ranking'=>'visitors#ranking'
   get '/review'=>'visitors#review'
@@ -33,5 +34,9 @@ Rails.application.routes.draw do
     #  end
     #end
   end
-
+  namespace :api do
+    namespace :v1 do
+      resource :wechat, only: [:show, :create]
+    end
+  end
 end
