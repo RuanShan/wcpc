@@ -44,7 +44,7 @@ background-size: 100%;
   color: #f3d4a1;
 }
 .footer_text{
-  font-size:0.5em;
+  font-size:0.6em;
 }
 .home_on{
   background-image:image-url("home_on.jpg")
@@ -139,9 +139,26 @@ table.activity_info a{
   color:black;
 }
 
-.weui-popup__overlay, .weui-popup__container{
-  z-index:500;
+.weui-popup__container .close-popup
+{
+  top: 20px;
+  right: 20px;
+  z-index: 503;
 }
-.weui-popup__modal{
-  z-index:500;
+.weui-popup__container  .weui-popup__modal{
+  background-color: #ffffff;
+  left: 20px;
+  right: 20px;
+  top:20px;
+  width: auto;
+  height: auto;
+  bottom: 80px;
+  z-index: 502;
+  border-radius: 0px;
+}
+.weui-popup__overlay
+{
+  background-color: #000000;
+  opacity: 0.7;
+  z-index: 501;
 }

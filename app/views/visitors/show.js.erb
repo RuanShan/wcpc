@@ -1,5 +1,4 @@
 window.share_config.share.imgUrl = <%== @photograph.photos[0].photo.url(:medium).to_json%>;
-alert(window.share_config.share.imgUrl);
 custom_popup({
   title: "<%@photograph.user.nickname%>的作品",
   text: <%== ( render :partial => 'show',:formats=>[:html] ).to_json %>,
