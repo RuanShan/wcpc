@@ -138,3 +138,10 @@ table.activity_info td{
 table.activity_info a{
   color:black;
 }
+
+.weui-popup__overlay, .weui-popup__container{
+  z-index:500;
+}
+.weui-popup__modal{
+  z-index:500;
+}
