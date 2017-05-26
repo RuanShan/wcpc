@@ -21,7 +21,7 @@ class PhotographsController < ApplicationController
     #@photograph = @activity.photographs.build(user_id:@current_wechat_user.id)
     @photograph = @activity.photographs.find_or_create_by(user_id:@current_wechat_user.id)
     if @photograph.persisted?
-      redirect_to "/show/#{@photograph.id}"
+    #  redirect_to "/show/#{@photograph.id}"
     else
       Photograph.upload_limit.times { @photograph.photos.build}
     end

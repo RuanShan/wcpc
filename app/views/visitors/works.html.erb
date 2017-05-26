@@ -105,40 +105,7 @@
     </td>
   </tr>
 </table>
-<div class="wcpc_content">
-  <%2.times do |i|%>
-    <div style="width:50%;float:left;">
-      <%@photographs.to_a.each_index do |index|%>
-        <%photograph = @photographs[index]%>
-        <%if (index%2)==i%>
-          <article class="weui-article" style="padding:5px;">
-            <section>
-              <%=link_to "/show/#{photograph.id}", remote:true do %>
-                <%=image_tag photograph.cover_url(:medium) %>
-              <%end%>
-            </section>
-            <section>
-                <div class="weui-media-box__bd" style="padding:20px;">
-                  <%avatar_url = photograph.user.avatar.present? ? photograph.user.avatar : ""%>
-                  <%=image_tag avatar_url, width:30, height:30, align:"right", style:"border-radius:50%;" %>
-                  <%=link_to vote_activity_photograph_path(@activity,photograph), remote:true do%>
-                    <%=fa_icon "heart-o", style:"color:#006934;"%>
-                  <%end%>
-                  <span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span>
-                  <h1>#<%=photograph.name%></h1>
-                  <h2 style="color:gray;"><%=photograph.intro[0,20]%>...</h2>
-              </div>
-            </section>
-          </article>
-        <%end%>
-      <%end%>
-    </div>
-  <%end%>
-  <div style="float:left;width:100%;">
-    <%= will_paginate @photographs %>
-  </div>
-
-</div>
+<%=render :partial=>"works"%>
 <script>
   $(function(){
     setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%=@activity.terminate_time.day%>);}, 1000);
