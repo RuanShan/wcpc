@@ -114,7 +114,7 @@
           <article class="weui-article" style="padding:5px;">
             <section>
               <%=link_to "/show/#{photograph.id}", remote:true do %>
-                <%=image_tag photograph.cover_url %>
+                <%=image_tag photograph.cover_url(:medium) %>
               <%end%>
             </section>
             <section>
