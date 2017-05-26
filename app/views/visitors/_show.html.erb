@@ -2,7 +2,7 @@
   <section>
     <% @photograph.photos.each do |photo|%>
       <div class="photo_item" <% if photo.id != @photograph.photos.first.id%>style="display:none;"<%end%>>
-        <%= image_tag photo.photo.url, id:"my_photo"%>
+        <%= image_tag photo.photo.url(:big), id:"my_photo"%>
       </div>
     <%end%>
   </section>
