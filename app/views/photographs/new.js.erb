@@ -2,7 +2,7 @@
   $.alert("您已经参加过活动啦");
 <%else%>
 
-  $.modal({
+  custom_popup({
     title: "上传图片",
     text: <%== ( render :partial => 'new',:formats=>[:html] ).to_json %>,
     buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} }]

@@ -88,6 +88,15 @@ $(function(){
   );
 });
 
+//title: "活动介绍",
+//text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
+//buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
+// title, text, buttons
+function custom_popup( options ){
+  $( ".weui-popup__modal" ).html( options.text);
+  $( ".weui-popup__container" ).popup();
+}
+
 function refresh_rest(input_id, rest_id, total){
   var input = $("#"+input_id).val();
   var rest = total - input.length;
