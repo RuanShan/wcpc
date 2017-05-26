@@ -1,4 +1,4 @@
-$("#share_photo_url").val("<%=asset_url(@photograph.photos[0].photo.url(:thumb))%>");
+window.share_config.share.imgUrl = "<%= @photograph.photos[0].photo.url(:thumb)%>";
 //alert($("#share_photo_url").val())
 custom_popup({
   title: "<%@photograph.user.nickname%>的作品",
