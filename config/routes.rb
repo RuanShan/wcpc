@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'visitors#index'
+  get '/admin'=>'users#index'
   get '/ranking'=>'visitors#ranking'
   get '/review'=>'visitors#review'
   get '/intro'=>'visitors#intro'

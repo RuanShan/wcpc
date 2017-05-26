@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :set_page_view
   wechat_api
 
+  def after_sign_out_path_for(current_user)
+    new_user_session_path
+  end
 
   protected
 
@@ -44,7 +47,7 @@ class ApplicationController < ActionController::Base
 
   def verify_wechat_subscriber
 
-    @current_wechat_user = User.find(3)  and return
+    #@current_wechat_user = User.find(3)  and return
 
     wechat_oauth2("snsapi_base") do |openid,other_info|
       user_info = Wechat.api.user(openid)
