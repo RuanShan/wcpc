@@ -138,3 +138,26 @@ table.activity_info td{
 table.activity_info a{
   color:black;
 }
+.weui-popup__container .close-popup
+{
+  top: 20px;
+  right: 20px;
+  z-index: 503;
+}
+.weui-popup__container  .weui-popup__modal{
+  background-color: #ffffff;
+  left: 20px;
+  right: 20px;
+  top:20px;
+  width: auto;
+  height: auto;
+  bottom: 80px;
+  z-index: 502;
+  border-radius: 0px;
+}
+.weui-popup__overlay
+{
+  background-color: #000000;
+  opacity: 0.7;
+  z-index: 501;
+}
