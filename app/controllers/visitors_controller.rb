@@ -1,7 +1,6 @@
 class VisitorsController < ApplicationController
   layout "wechat"
-  #before_action :set_wechat_user, except: [:index,:subscribe]
-  before_action :verify_wechat_subscriber, except: [:subscribe]
+  before_action :set_wechat_user, except: [:subscribe]
 
   def index
 

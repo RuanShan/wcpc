@@ -18,6 +18,7 @@ class PhotographsController < ApplicationController
   end
 
   def new
+Rails.logger.debug " @current_wechat_user=#{@current_wechat_user.inspect}"    
     #@photograph = @activity.photographs.build(user_id:@current_wechat_user.id)
     @photograph = @activity.photographs.find_or_create_by(user_id:@current_wechat_user.id)
     if @photograph.persisted?

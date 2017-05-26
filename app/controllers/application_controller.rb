@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
     #    redirect_to "/subscribe"
     #  end
     #end
+    verify_wechat_subscriber
   end
 
   def verify_wechat_subscriber
