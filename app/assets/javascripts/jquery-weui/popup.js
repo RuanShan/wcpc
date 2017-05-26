@@ -39,7 +39,7 @@
     $($(this).data("target")).popup();
   })
   .on("click", ".weui-popup__container", function(e) {
-    if($(e.target).hasClass("weui-popup__container")) $.closePopup();
+    //if($(e.target).hasClass("weui-popup__container")) $.closePopup();
   })
 
   $.fn.popup = function() {
