@@ -8,6 +8,7 @@ class Photograph < ApplicationRecord
   has_many :photos, dependent: :destroy
   validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :user, allow_destroy: false
 
   validates :photos, presence: true
   validates :name, length: { in: 1..15 }

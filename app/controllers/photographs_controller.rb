@@ -29,6 +29,10 @@ class PhotographsController < ApplicationController
 
   def create
     @photograph = Photograph.create(photograph_params)
+    if params["photograph"]["user_attributes"]
+      @current_wechat_user.phone=params["photograph"]["user_attributes"]["phone"]
+      @current_wechat_user.save
+    end
     if @photograph.errors.empty?
       flash[:notice] = "create photograph"
       redirect_to "/show/#{@photograph.id}"
@@ -71,7 +75,7 @@ class PhotographsController < ApplicationController
   private
 
   def photograph_params
-    params.require(:photograph).permit(:user_id, :activity_id, :name, :intro, :manifesto, photos_attributes: [:id,:photo,:_destroy] )
+    params.require(:photograph).permit(:user_id, :activity_id, :name, :intro, :manifesto, photos_attributes: [:id,:photo,:_destroy], user_attributes: [:id,:photo] )
   end
 
   def set_photograph

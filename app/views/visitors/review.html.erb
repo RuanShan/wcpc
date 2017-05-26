@@ -1,6 +1,7 @@
 <article class="weui-article">
-  <h1>活动说明</h1>
   <section>
-    <p><%=raw @activity.intro%></p>
+    <%14.times do |index|%>
+    <%=image_tag "trace_"+(index+1).to_s+".jpg"%>
+    <%end%>
   </section>
 </article>

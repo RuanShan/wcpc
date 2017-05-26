@@ -21,3 +21,5 @@ zh-CN:
         origin: "来源"
         start_date: "开始日期"
         end_date: "结束日期"
+      user:
+        phone: "电话号码"
