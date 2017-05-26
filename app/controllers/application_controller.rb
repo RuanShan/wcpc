@@ -29,17 +29,35 @@ class ApplicationController < ActionController::Base
   end
 
   def set_wechat_user
-    #@current_wechat_user = User.find(3)
-    wechat_oauth2("snsapi_userinfo") do |openid,other_info|
-      user_info = Wechat.api.user(other_info["openid"])
+    @current_wechat_user = User.find(3)
+    #wechat_oauth2("snsapi_userinfo") do |openid,other_info|
+    #  user_info = Wechat.api.user(other_info["openid"])
+    #  logger.debug "user_info=#{user_info.inspect}"
+    #  @current_wechat_user = User.find_or_create_by(uid: openid)
+    #  @current_wechat_user.update_info(user_info)
+    #  if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
+    #    redirect_to "/subscribe"
+    #  end
+    #end
+  end
+
+  def verify_wechat_subscriber
+
+
+    wechat_oauth2("snsapi_base") do |openid,other_info|
+      user_info = Wechat.api.user(openid)
+      #如果关注了，能够取到用户信息，否则给出关注链接
       logger.debug "user_info=#{user_info.inspect}"
-      @current_wechat_user = User.find_or_create_by(uid: openid)
-      @current_wechat_user.update_info(user_info)
-      if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
-        redirect_to "/subscribe"
+      if user_info
+        @current_wechat_user = User.find_or_create_by(uid: openid)
+        @current_wechat_user.update_info(user_info)
+        if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
+          redirect_to "/subscribe"
+        end
+      else
+        redirect_to "/subscribe"        
       end
     end
   end
-
 
 end

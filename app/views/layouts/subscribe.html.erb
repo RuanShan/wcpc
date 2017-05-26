@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title><%=@activity.name%></title>
+    <%= stylesheet_link_tag 'weui-rails', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+</head>
+<body ontouchstart>
+  <div style="position:absolute;bottom:0;top:0;left:0;right:0;">
+    <div class="weui-tab">
+      <div class="weui-tab__panel">
+        <%= yield %>
+      </div>
+      <div id="iosDialog2" class="js_dialog" style="opacity: 1; display:none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+          <div class="weui-dialog__bd"></div>
+          <div class="weui-dialog__ft">
+            <a class="weui-dialog__btn weui-dialog__btn_primary" href="javascript:;">知道了</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="wcpc_popup" class="weui-popup__container">
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal">
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

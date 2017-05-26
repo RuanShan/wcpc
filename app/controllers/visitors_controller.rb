@@ -1,7 +1,10 @@
 class VisitorsController < ApplicationController
   layout "wechat"
-  before_action :set_wechat_user
+  #before_action :set_wechat_user, except: [:index,:subscribe]
+  before_action :verify_wechat_subscriber
+
   def index
+
   end
 
   def works
@@ -12,6 +15,7 @@ class VisitorsController < ApplicationController
   end
 
   def subscribe
+    render :subscribe, layout: 'subscribe'
   end
 
   def my_account
@@ -29,7 +33,7 @@ class VisitorsController < ApplicationController
 
   def intro
   end
-  
+
   private
 
 

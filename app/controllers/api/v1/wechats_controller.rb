@@ -5,4 +5,17 @@ class Api::V1::WechatsController < ApplicationController
   on :text do |request, content|
     request.reply.text "echo: #{content}" # Just echo
   end
+
+  on :event, with: 'subscribe' do |request|
+    request.reply.text "#{request[:FromUserName]} subscribe now"
+  end
+
+  # http://www.cnblogs.com/xiaocainiao2hao/p/5731800.html
+  # 用户未登录下单 -> 生成微信二维码 -> 用户扫码关注公众号 -> 查看订单详细信息 就完成了。
+  # https://mp.weixin.qq.com/wiki?id=mp1443433542 生成带参数的二维码
+  # 公众号收到未关注用户扫描qrscene_xxxxxx二维码时。注意此次扫描事件将不再引发上条的用户加关注事件
+  on :scan, with: 'qrscene_20170530' do |request, ticket|
+    request.reply.text "Unsubscribe user #{request[:FromUserName]} Ticket #{ticket}"
+  end
+
 end
