@@ -1,5 +1,5 @@
 <%if @activity.photographs.find_by_user_id(@current_wechat_user.id).present? %>
-  $.alert("您已经参加过活动啦");
+  alert("您已经参加过活动啦");
 <%else%>
 
   custom_popup({
