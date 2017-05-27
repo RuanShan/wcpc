@@ -33,7 +33,7 @@
         <%if @photograph.errors.include?(:photos)%>请上传一张图片，格式为jpg, jpeg, png或gif<%end%>
       </div>
     </div>
-    <div class="weui-cells__tips" style="text-align:left;">温馨提示：</br>建议您上传未经社交软件压缩过的原图，否则可能读取不到照片的参数而造成不能成功上传。</div>
+    <div class="weui-cells__tips" style="text-align:left;">温馨提示：</br>建议您上传的萌宝照片尺寸不要超过8M，否则可能读取不到照片的参数而造成不能成功上传。</div>
 
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell <%if @photograph.errors.include?(:name)%>weui-cell_warn<%end%>">
