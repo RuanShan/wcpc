@@ -46,8 +46,9 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_wechat_subscriber
-
-    #@current_wechat_user = User.find(3)  and return
+    if Rails.env.development?
+      @current_wechat_user = User.find(3)  and return
+    end
 
     wechat_oauth2("snsapi_base") do |openid,other_info|
       user_info = Wechat.api.user(openid)
