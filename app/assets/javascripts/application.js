@@ -80,7 +80,8 @@ $(function(){
       pagination: '.swiper-pagination',
       paginationType: 'bullets',
       paginationClickable: true,
-      //autoplay: true,
+      speed:2500,
+      autoplay: true,
       loop: true
     }
   );
