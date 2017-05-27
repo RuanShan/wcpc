@@ -105,7 +105,7 @@ background-size: 100%;
 .main .swiper-pagination.swiper-pagination-clickable{
 
   top:auto;
-  bottom: 0;
+  bottom: 24px;
   .swiper-pagination-bullet
   {
     background-color: #006934;
@@ -146,6 +146,10 @@ table.activity_info a{
   top: 20px;
   right: 20px;
   z-index: 503;
+  .weui-icon-cancel
+  {
+    font-size: 27px;
+  }
 }
 .weui-popup__container  .weui-popup__modal{
   background-color: #ffffff;
