@@ -16,7 +16,17 @@ class Api::V1::WechatsController < ApplicationController
   # 公众号收到未关注用户扫描qrscene_xxxxxx二维码时。注意此次扫描事件将不再引发上条的用户加关注事件
   on :scan, with: 'qrscene_20170530' do |request, ticket|
     Rails.logger.debug "Unsubscribe user #{request[:FromUserName]} Ticket #{ticket}"
-    request.reply.text "谢谢关注，欢迎,请点击 <a href='http://wx-wcpc.getstore.cn'>参加活动 </a>"
+txt = <<END_OF_STRING    语禾宝宝粥米
+禾你一起宠爱 | 萌宝睡照摄影大赛 报名正式启动！
+
+点击 <a href='http://wx-wcpc.getstore.cn'>参与活动 </a>。
+上传你最中意的宝宝睡姿照片，并邀请好友助力投票，
+即有机会赢得超越想象的心动大礼。
+
+惊喜福利必将眷顾每一位超人妈咪以及英雄老爸！
+END_OF_STRING
+
+    request.reply.text txt
   end
 
 end
