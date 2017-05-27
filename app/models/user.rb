@@ -5,23 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   before_validation :set_password
- # validates :birthday, presence: true
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize
-  end
-
-  def self.new_with_session(params, session)
-   super.tap do |user|
-     if data = session['devise.wechat_data']
-       user.provider = data['provider']
-       user.uid = data['uid']
-       #user.nickname = data['info']['nickname']
-       #user.sex = data['info']['sex']
-       #user.avatar = data['info']['headimgurl']
-     end
-   end
-  end
+  has_many :photographs, dependent: :destroy
+  self.per_page = 3
 
   def email_required?
    false
