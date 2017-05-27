@@ -36,6 +36,8 @@ gem 'wechat'
 gem 'weui-rails'
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'mysql2'
+
 gem 'paperclip_oss_storage',   github: 'RuanShan/paperclip_oss_storage', branch: 'master'
 
 group :development do
