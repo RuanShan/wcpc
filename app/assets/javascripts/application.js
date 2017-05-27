@@ -15,6 +15,8 @@
 //= require_tree .
 
 $(function(){
+  FastClick.attach(document.body);
+
   $('#iosDialog2').on('click', '.weui-dialog__btn', function(){
     $(this).parents('.js_dialog').fadeOut(200);
   });
