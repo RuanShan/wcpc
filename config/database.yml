@@ -21,6 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  pool: 100
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: wcpc_production
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
