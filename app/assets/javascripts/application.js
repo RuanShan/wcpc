@@ -30,6 +30,15 @@
 $(function(){
   FastClick.attach(document.body);
 
+  //remove link from iphone alert
+  window.alert = function(name){
+    var iframe = document.createElement("IFRAME");
+    iframe.style.display="none";
+    iframe.setAttribute("src", 'data:text/plain,');
+    document.documentElement.appendChild(iframe);
+    window.frames[0].window.alert(name);
+    iframe.parentNode.removeChild(iframe);
+   };
   $('#iosDialog2').on('click', '.weui-dialog__btn', function(){
     $(this).parents('.js_dialog').fadeOut(200);
   });
@@ -46,45 +55,27 @@ $(function(){
   $(".footer_off").css("width",footer_width+"px")
   $(".footer_off").css("height",footer_height+"px")
   $(".footer_text").css("padding-top",footer_text_top+"px")
+
   //poster1 link
   var poster1_width=950;
-  var poster1_height=1480;
+  var poster1_height=1397;
   if(window_width>950){
     var poster1_fit_width=poster1_width;
   }else{
     var poster1_fit_width=window_width;
   }
-  var poster1_fit_height=Math.floor((poster1_fit_width*1480)/950);
+  var poster1_fit_height=Math.floor((poster1_fit_width*poster1_height)/poster1_width);
   var wrate1 = (poster1_fit_width/poster1_width);
   var hrate1 = (poster1_fit_height/poster1_height);
-  var poster1_link = [350, 1210, 625, 1280];
-  var coords1 = "";
-  coords1 += Math.floor(wrate1*poster1_link[0]).toString()+",";
-  coords1 += Math.floor(hrate1*poster1_link[1]).toString()+",";
-  coords1 += Math.floor(wrate1*poster1_link[2]).toString()+",";
-  coords1 += Math.floor(hrate1*poster1_link[3]).toString();
-  $("#area1").attr("coords",coords1)
+  var poster1_top = Math.floor(wrate1*1210).toString()+"px";
+  var poster1_left = Math.floor(hrate1*300).toString()+"px";
+  $("#text1").css("top",poster1_top);
+  $("#text1").css("left",poster1_left);
 
-  //poster2 link
-  var poster2_width=951;
-  var poster2_height=1481;
-  if(window_width>951){
-    var poster2_fit_width=poster2_width;
-  }else{
-    var poster2_fit_width=window_width;
-  }
-  var poster2_fit_height=Math.floor((poster2_fit_width*1481)/951);
-  var wrate2 = (poster2_fit_width/poster2_width);
-  var hrate2 = (poster2_fit_height/poster2_height);
-  var poster2_link = [340, 375, 615, 440];
-  var coords2 = "";
-  coords2 += Math.floor(wrate2*poster2_link[0]).toString()+",";
-  coords2 += Math.floor(hrate2*poster2_link[1]).toString()+",";
-  coords2 += Math.floor(wrate2*poster2_link[2]).toString()+",";
-  coords2 += Math.floor(hrate2*poster2_link[3]).toString();
-
-  $("#area2").attr("coords",coords2)
-
+  var poster2_top = Math.floor(wrate1*415).toString()+"px";
+  var poster2_left = Math.floor(hrate1*300).toString()+"px";
+  $("#text2").css("top",poster2_top);
+  $("#text2").css("left",poster2_left);
 
   if($("#cover").length>0){
     var height = Math.floor((window_width*501)/751);
@@ -136,7 +127,12 @@ $(function(){
       paginationClickable: true,
       //speed:2500,
       //autoplay: true,
-      loop: true
+      loop: true,
+      onSlideChangeStart: function(swiper){
+        $("#text1").hide();
+        $("#text2").hide();
+        $("#text"+swiper.activeIndex).show();
+      }
     }
   );
 

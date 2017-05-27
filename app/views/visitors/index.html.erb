@@ -3,23 +3,17 @@
   <div class="swiper-container" >
     <section class="swiper-wrapper">
       <%3.times do |index|%>
-      <p class="photo_item swiper-slide">
-        <% if index <2 %>
-          <%=image_tag "poster"+(index+1).to_s+".jpg", id:"poster"+(index+1).to_s, usemap:"#Map"+(index+1).to_s%>
-          <map name="Map<%=(index+1).to_s%>" id="Map<%=(index+1).to_s%>">
-            <% if index == 0 %>
-              <area id="area1" shape="rect" coords="0,0,0,0" onclick="<%=links[index]%>" href="#" />
-            <%else%>
-              <area id="area<%=(index+1).to_s%>" shape="rect" coords="0,0,0,0" href="<%=links[index]%>" />
-            <%end%>
-          </map>
-        <%else%>
-          <%=image_tag "poster"+(index+1).to_s+".jpg"%>
-        <%end%>
-      </p>
+        <p class="photo_item swiper-slide">
+          <%=image_tag "poster"+(index+1).to_s+".jpg", id:"poster"+(index+1).to_s%>
+        </p>
       <%end%>
     </section>
-   <div class="swiper-pagination"></div>
-
+    <%=link_to new_activity_photograph_path(@activity), remote:true do %>
+      <div id="text1" style="border:2px solid #006934;z-index:50;text-align:center;color:#90633c;position:absolute;top:0px;left:0;padding:5px 30px;">我要参赛</div>
+    <%end%>
+    <%=link_to "/review" do %>
+      <div id="text2" style="border:2px solid #006934;z-index:50;text-align:center;color:#90633c;position:absolute;top:0px;left:0;padding:5px 30px;;display:none;">了解详情</div>
+    <%end%>
+    <div class="swiper-pagination"></div>
   </div>
 </article>
