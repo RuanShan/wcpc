@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require swiper
+//= require jquery-weui/popup
+//= require jquery-weui/transition
+//= require fastclick
+//= require jquery.validate.min
+
 
 
 // 手机号码验证
