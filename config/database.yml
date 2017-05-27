@@ -27,4 +27,4 @@ production:
   database: wcpc_production
   username: root
   password:
-  socket: /var/lib/mysql/mysql.sock
+  socket: /tmp/mysql.sock
