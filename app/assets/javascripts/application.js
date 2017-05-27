@@ -14,6 +14,14 @@
 //= require jquery_ujs
 //= require_tree .
 
+
+// 手机号码验证
+jQuery.validator.addMethod("cnmobile", function(value, element) {
+    var length = value.length;
+    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+    return this.optional(element) || (length == 11 && mobile.test(value));
+}, "请正确填写您的手机号码");
+
 $(function(){
   FastClick.attach(document.body);
 
@@ -82,11 +90,12 @@ $(function(){
       pagination: '.swiper-pagination',
       paginationType: 'bullets',
       paginationClickable: true,
-      speed:2500,
-      autoplay: true,
+      //speed:2500,
+      //autoplay: true,
       loop: true
     }
   );
+
 });
 
 //title: "活动介绍",

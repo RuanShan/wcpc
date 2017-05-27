@@ -30,7 +30,7 @@
             </div>
           </div>
         <% end %>
-        <%if @photograph.errors.include?(:photos)%>请至少上传一张图片，格式为jpg, jpeg, png或gif<%end%>
+        <%if @photograph.errors.include?(:photos)%>请上传一张图片，格式为jpg, jpeg, png或gif<%end%>
       </div>
     </div>
     <div class="weui-cells__tips" style="text-align:left;">温馨提示：</br>建议您上传未经社交软件压缩过的原图，否则可能读取不到照片的参数而造成不能成功上传。</div>
@@ -44,7 +44,7 @@
       <div class="weui-cell <%if @photograph.errors.include?(:name)%>weui-cell_warn<%end%>">
         <div class="weui-cell__bd">
           <%name_ph = @photograph.errors.size > 0 ? @photograph.errors.messages[:name][0] : "限15字符"%>
-          <%= f.text_field :name, class:"weui-input", placeholder: name_ph%>
+          <%= f.text_field :name, class:"weui-input", placeholder: name_ph, required: true%>
         </div>
       </div>
       <div id="name_rest" class="weui-cells__tips" style="text-align:left;">（剩余15字符）</div>
@@ -69,7 +69,7 @@
         <div class="weui-cell">
           <div id="user_div" class="weui-cell__bd">
             <div class="weui-cell__bd">
-              <%= user_form.text_field :phone, class:"weui-input", placeholder:"" %>
+              <%= user_form.text_field :phone, class:"weui-input", type:"tel", placeholder:"请输入手机号", required: true%>
             </div>
           </div>
         </div>
@@ -87,3 +87,31 @@
   <% end %>
 </div>
 </center>
+<script>
+$(document).ready(function(){
+  $("#new_photograph").validate({
+      rules:{
+          'photograph[name]':{
+            required: true,
+            rangelength:[2,15]
+          },
+          'photograph[user_attributes][phone]':{
+            required:true,
+            minlength: 11,
+            cnmobile:true
+          }
+        },
+      messages : {
+        'photograph[user_attributes][phone]' : {
+            required : "",
+            minlength : "",
+            cnmobile : ""
+        },
+        'photograph[name]' : {
+            required : "",
+            rangelength : ""
+        }
+      }       })
+
+})
+</script>
