@@ -6,7 +6,6 @@
     <title><%=@activity.name%></title>
     <%= stylesheet_link_tag 'weui-rails', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <script src="http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <%= wechat_config_js debug: false, api: %w(hideMenuItems onMenuShareTimeline onMenuShareAppMessage onMenuShareQQ closeWindow) -%>
     <script type="application/javascript">

@@ -1,4 +1,4 @@
-+ function($) {
+(function($) {
   "use strict";
 
 
@@ -6,7 +6,7 @@
 
   $.openPopup = function(popup, className) {
 
-    $.closePopup();
+    //$.closePopup();
 
     popup = $(popup);
     popup.show();
@@ -48,4 +48,4 @@
     });
   };
 
-}($);
+})($);
