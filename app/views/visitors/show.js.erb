@@ -1,5 +1,5 @@
 window.share_config.share.imgUrl = <%== @photograph.photos[0].photo.url(:medium).to_json%>;
-window.share_config.share.link = <%==url_for( action: :show, id: @photograph.id).to_json %>;
+window.share_config.share.link = <%==url_for( action: :show, id: @photograph.id, only_path: false).to_json %>;
 
 custom_popup({
   title: "<%@photograph.user.nickname%>的作品",
