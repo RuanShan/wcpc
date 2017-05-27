@@ -1,0 +1,11 @@
+<div class="wcpc_content">
+  <%2.times do |i|%>
+    <div id="works<%=i+1%>" style="width:50%;float:left;">
+      <%=render :partial=>"work_item", locals:{i: i}%>
+    </div>
+  <%end%>
+  <div style="float:left;width:100%;">
+    <%=link_to "点击刷新", "/works?page=#{(@current_page+1).to_s}", :remote=>true, :id=>"refresh", style:"color:gray;" %>
+  </div>
+
+</div>

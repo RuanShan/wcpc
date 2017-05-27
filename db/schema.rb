@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523161028) do
+ActiveRecord::Schema.define(version: 20170526125526) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170523161028) do
     t.string   "city"
     t.string   "country"
     t.integer  "card_status"
+    t.string   "phone"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

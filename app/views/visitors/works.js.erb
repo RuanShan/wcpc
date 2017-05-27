@@ -1,0 +1,8 @@
+<%if @photographs.present? %>
+  $("#works1").append(<%==(render :partial=>'work_item', locals:{i: 0}).to_json %>);
+  $("#works2").append(<%==(render :partial=>'work_item', locals:{i: 1}).to_json %>);
+  $("#refresh").attr("href","/works?page=<%=@current_page+1%>")
+<%else%>
+  $("#refresh").attr("href","#")
+  $("#refresh").html("到底啦");
+<%end%>

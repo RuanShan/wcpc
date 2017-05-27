@@ -12,6 +12,7 @@
               <th>国家</th>
               <th>省份</th>
               <th>城市</th>
+              <th>电话</th>
             </tr>
           </thead>
           <% @wx_users.each do |user| %>
@@ -22,6 +23,7 @@
               <td><%= user.country %></td>
               <td><%= user.province %></td>
               <td><%= user.city %></td>
+              <td><%= user.try(:phone) %></td>
             </tr>
           <% end %>
         </tbody>

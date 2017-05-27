@@ -60,6 +60,20 @@
         </div>
       </div>
       <div id="intro_rest" class="weui-cells__tips" style="text-align:left;">（剩余60字符）</div>
+      <%= f.fields_for :user do |user_form| %>
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <%= user_form.label :phone, class:"weui-label", style:"text-align:left;" %>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div id="user_div" class="weui-cell__bd">
+            <div class="weui-cell__bd">
+              <%= user_form.text_field :phone, class:"weui-input", placeholder:"" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :activity_id %>
 
