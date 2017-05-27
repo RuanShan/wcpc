@@ -16,7 +16,7 @@ class Api::V1::WechatsController < ApplicationController
   # 公众号收到未关注用户扫描qrscene_xxxxxx二维码时。注意此次扫描事件将不再引发上条的用户加关注事件
   on :scan, with: 'qrscene_20170530' do |request, ticket|
     Rails.logger.debug "Unsubscribe user #{request[:FromUserName]} Ticket #{ticket}"
-    request.reply.text "谢谢关注，欢迎,请点击 <a href='http://wx-wcpc-staging.getstore.cn'>参加活动 </a>"
+    request.reply.text "谢谢关注，欢迎,请点击 <a href='http://wx-wcpc.getstore.cn'>参加活动 </a>"
   end
 
 end
