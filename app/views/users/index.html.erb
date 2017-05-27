@@ -13,9 +13,10 @@
               <th>省份</th>
               <th>城市</th>
               <th>电话</th>
+              <th></th>
             </tr>
           </thead>
-          <% @wx_users.each do |user| %>
+          <% @users.each do |user| %>
             <tr>
               <td><%=image_tag( user.avatar, width:40, height:40) if user.avatar %></td>
               <td><%= user.nickname %></td>
@@ -24,6 +25,7 @@
               <td><%= user.province %></td>
               <td><%= user.city %></td>
               <td><%= user.try(:phone) %></td>
+              <td><%= link_to "删除", user_path(user), method: 'delete' %></td>
             </tr>
           <% end %>
         </tbody>
@@ -31,3 +33,4 @@
     </div>
   </div>
 </div>
+<%= will_paginate @users %>
