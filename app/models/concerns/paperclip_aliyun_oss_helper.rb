@@ -18,10 +18,12 @@
         # taxon/post/
         path = ":class/:id_:filename"
         #make sure each
-        attachment_key = :photo  # spree_image/ spree_template_file
-        attachment_definitions[attachment_key][:path] = path
-        attachment_definitions[attachment_key][:url] = 'http://:aliyun_host/'+path+':aliyun_style'
-        attachment_definitions[attachment_key][:styles] = {} #no need styles anymore. it is supproted by oss style
+        attachment_keys = [:photo, :logo]  # spree_image/ spree_template_file
+        attachment_keys.each{|attachment_key|
+          attachment_definitions[attachment_key][:path] = path
+          attachment_definitions[attachment_key][:url] = 'http://:aliyun_host/'+path+':aliyun_style'
+          attachment_definitions[attachment_key][:styles] = {} #no need styles anymore. it is supproted by oss style
+        }
       end
 
       def storage_aliyun?
