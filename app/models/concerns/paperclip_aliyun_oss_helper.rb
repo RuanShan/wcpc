@@ -20,9 +20,11 @@
         #make sure each
         attachment_keys = [:photo, :logo]  # spree_image/ spree_template_file
         attachment_keys.each{|attachment_key|
-          attachment_definitions[attachment_key][:path] = path
-          attachment_definitions[attachment_key][:url] = 'http://:aliyun_host/'+path+':aliyun_style'
-          attachment_definitions[attachment_key][:styles] = {} #no need styles anymore. it is supproted by oss style
+          if attachment_definitions[attachment_key]
+            attachment_definitions[attachment_key][:path] = path
+            attachment_definitions[attachment_key][:url] = 'http://:aliyun_host/'+path+':aliyun_style'
+            attachment_definitions[attachment_key][:styles] = {} #no need styles anymore. it is supproted by oss style
+          end
         }
       end
 
