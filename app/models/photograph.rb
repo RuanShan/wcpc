@@ -11,8 +11,8 @@ class Photograph < ApplicationRecord
   accepts_nested_attributes_for :user, allow_destroy: false
 
   validates :photos, presence: true
-  validates :name, length: { in: 1..15 }
-  validates :intro, length: { in: 1..60 }
+  validates :name, length: { in: 2..15 }
+  validates :intro, length: { in: 2..60 }
 
   after_create :get_card
 
