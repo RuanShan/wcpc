@@ -8,7 +8,3 @@ button:
   type: "view"
   name: "商城"
   url:  "https://weidian.com/s/981175353?wfr=c&ifr=shopdetail"
- -
-  type: "view"
-  name: "关于语禾"
-  url:  ""
