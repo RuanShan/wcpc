@@ -2,9 +2,9 @@
 button:
  -
   type: "view"
-  name: "活动"
+  name: "睡照大赛"
   url:  "http://wx-wcpc.getstore.cn/"
  -
   type: "view"
-  name: "商城"
+  name: "线上商场"
   url:  "https://weidian.com/s/981175353?wfr=c&ifr=shopdetail"
