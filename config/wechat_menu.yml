@@ -1,0 +1,10 @@
+# More option see https://github.com/Eric-Guo/wechat#menu-create
+button:
+ -
+  type: "view"
+  name: "活动"
+  url:  "http://wx-wcpc.getstore.cn/"
+ -
+  type: "view"
+  name: "商城"
+  url:  "https://weidian.com/s/981175353?wfr=c&ifr=shopdetail"
