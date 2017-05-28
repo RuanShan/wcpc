@@ -56,27 +56,6 @@ $(function(){
   $(".footer_off").css("height",footer_height+"px")
   $(".footer_text").css("padding-top",footer_text_top+"px")
 
-  //poster1 link
-  var poster1_width=950;
-  var poster1_height=1397;
-  if(window_width>950){
-    var poster1_fit_width=poster1_width;
-  }else{
-    var poster1_fit_width=window_width;
-  }
-  var poster1_fit_height=Math.floor((poster1_fit_width*poster1_height)/poster1_width);
-  var wrate1 = (poster1_fit_width/poster1_width);
-  var hrate1 = (poster1_fit_height/poster1_height);
-  var poster1_top = Math.floor(wrate1*1210).toString()+"px";
-  var poster1_left = Math.floor(hrate1*300).toString()+"px";
-  $("#text1").css("top",poster1_top);
-  $("#text1").css("left",poster1_left);
-
-  var poster2_top = Math.floor(wrate1*415).toString()+"px";
-  var poster2_left = Math.floor(hrate1*300).toString()+"px";
-  $("#text2").css("top",poster2_top);
-  $("#text2").css("left",poster2_left);
-
   if($("#cover").length>0){
     var height = Math.floor((window_width*501)/751);
     $("#cover").css("width",window_width+"px");
@@ -97,13 +76,6 @@ $(function(){
     $("#cards").show();
   });
 
-  $("#photograph_name").on('keydown', function(){
-    refresh_rest("photograph_name", "name_rest", 15)
-  });
-
-  $("#photograph_intro").on('keydown', function(){
-    refresh_rest("photograph_intro", "intro_rest", 60)
-  });
 
   //$(".photo_item").on("swipeleft",function(){
   //  alert("You swiped left!");
@@ -127,12 +99,7 @@ $(function(){
       paginationClickable: true,
       //speed:2500,
       //autoplay: true,
-      loop: true,
-      onSlideChangeStart: function(swiper){
-        $("#text1").hide();
-        $("#text2").hide();
-        $("#text"+swiper.activeIndex).show();
-      }
+      loop: true
     }
   );
 

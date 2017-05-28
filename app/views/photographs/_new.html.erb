@@ -7,7 +7,7 @@
   </div>
 
 <div style="width:90%;">
-  <%= form_for(@photograph, url: {:action=>"create"} ) do |f| %>
+  <%= form_for(@photograph, url: {:action=>"create"}, remote:true ) do |f| %>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
       <div class="weui-cell__hd">
         <%= f.label :photo, class:"weui-label", style:"text-align:left;" %>
@@ -89,29 +89,50 @@
 </center>
 <script>
 $(document).ready(function(){
+  $("#photograph_name").on('change', function(){
+    refresh_rest("photograph_name", "name_rest", 15)
+  });
+
+  $("#photograph_intro").on('change', function(){
+    refresh_rest("photograph_intro", "intro_rest", 60)
+  });
+  // 手机号码验证
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+  var length = value.length;
+  var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+  return this.optional(element) || (length == 11 && mobile.test(value));
+  }, "请正确填写您的手机号码");
+
   $("#new_photograph").validate({
       rules:{
-          'photograph[name]':{
-            required: true,
-            rangelength:[2,15]
-          },
+        'photograph[name]':{
+          required: true,
+          rangelength:[2,15]
+        },
+        'photograph[intro]':{
+          required: true,
+          rangelength:[2,60]
+        },
           'photograph[user_attributes][phone]':{
             required:true,
-            minlength: 11,
-            cnmobile:true
+            isMobile: true
           }
         },
       messages : {
-        'photograph[user_attributes][phone]' : {
-            required : "",
-            minlength : "",
-            cnmobile : ""
-        },
         'photograph[name]' : {
-            required : "",
-            rangelength : ""
+            required : "作品名称别忘了填",
+            rangelength : "名称需要2-15位字符"
+        },
+        'photograph[intro]':{
+          required: "作品介绍填一下吧",
+          rangelength:"介绍文字需要2-60位字符"
+        },
+        'photograph[user_attributes][phone]' : {
+            required : "需要您的联系方式哦",
+            minlength : "电话号码需要11位哦"
         }
-      }       })
+      }
 
+    })
 })
 </script>
