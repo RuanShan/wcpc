@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_validation :set_password
+  before_validation :set_password, on: :create
 
   has_many :photographs, dependent: :destroy
   self.per_page = 3

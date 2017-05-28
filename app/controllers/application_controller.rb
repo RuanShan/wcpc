@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
       #如果关注了，能够取到用户信息，否则给出关注链接
       logger.debug "user_info=#{user_info.inspect}"
       if user_info
-        @current_wechat_user = User.find_or_create_by(uid: openid)
+        @current_wechat_user = User.find_or_create_by!(uid: openid)
         @current_wechat_user.update_info(user_info)
         if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
           redirect_to "/subscribe"

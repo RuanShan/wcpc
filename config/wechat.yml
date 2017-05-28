@@ -16,6 +16,9 @@ production:
 development:
   <<: *default
   #trusted_domain_fullname: <%= ENV['WECHAT_TRUSTED_DOMAIN_FULLNAME'] %>
+development_hui:
+  <<: *default
+  #trusted_domain_fullname: <%= ENV['WECHAT_TRUSTED_DOMAIN_FULLNAME'] %>
 
 test:
   <<: *default
