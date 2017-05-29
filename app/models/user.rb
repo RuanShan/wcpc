@@ -7,7 +7,7 @@ class User < ApplicationRecord
   before_validation :set_password, on: :create
 
   has_many :photographs, dependent: :destroy
-  self.per_page = 3
+  self.per_page = 10
 
   def email_required?
    false

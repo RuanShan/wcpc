@@ -5,7 +5,8 @@ class PhotographsController < ApplicationController
   before_action :set_photograph, only: [:show, :edit, :update, :user_edit, :user_update, :destroy, :vote]
 
   def index
-    @photographs = @activity.photographs.paginate(:page => params[:page])
+    order = params[:order] ? params[:order] : "created_at desc"
+    @photographs = @activity.photographs.order(order).paginate(:page => params[:page])
   end
 
   def search

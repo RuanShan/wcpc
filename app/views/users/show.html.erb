@@ -1,3 +1,45 @@
-<h3>User</h3>
-<p>Name: <%= @user.name if @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div>
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td rowspan="8" width="150px;">
+          <p><%= image_tag @user.avatar%></p>
+        </td>
+        <td>姓名</td>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td>电话</td>
+        <td><%= @user.phone %></td>
+      </tr>
+      <tr>
+        <td>作品</td>
+        <td>
+          <%if @user.photographs.present?%>
+            <%=link_to @user.photographs[0].try(:name), activity_photograph_path(@activity, @user.photographs[0])%>
+          <%end%>
+        </td>
+      </tr>
+      <tr>
+        <td>微信名</td>
+        <td><%= @user.nickname %></td>
+      </tr>
+      <tr>
+        <td>性别</td>
+        <td><%= @user.gender %></td>
+      </tr>
+      <tr>
+        <td>国家</td>
+        <td><%=@user.country %></td>
+      </tr>
+      <tr>
+        <td>省份</td>
+        <td><%=@user.province %></td>
+      </tr>
+      <tr>
+        <td>城市</td>
+        <td><%=@user.city %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

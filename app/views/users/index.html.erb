@@ -12,8 +12,9 @@
               <th>国家</th>
               <th>省份</th>
               <th>城市</th>
+              <th>姓名</th>
               <th>电话</th>
-              <th></th>
+              <th colspan="2"></th>
             </tr>
           </thead>
           <% @users.each do |user| %>
@@ -24,7 +25,9 @@
               <td><%= user.country %></td>
               <td><%= user.province %></td>
               <td><%= user.city %></td>
+              <td><%= user.try(:name) %></td>
               <td><%= user.try(:phone) %></td>
+              <td><%= link_to "查看", user_path(user) %></td>
               <td><%= link_to "删除", user_path(user), method: 'delete' %></td>
             </tr>
           <% end %>

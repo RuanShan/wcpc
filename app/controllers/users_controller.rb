@@ -7,9 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(id:params[:id]).first
-    unless @user == current_user
-      redirect_to new_user_session_path, :alert => "Access denied."
-    end
   end
 
   def destroy

@@ -3,20 +3,24 @@
       <tr>
         <th>作品名称</th>
         <th>作者</th>
-        <th colspan="3"></th>
+        <th>票数</th>
+        <th colspan="3">
+          <%=link_to "查看排名", activity_photographs_path(@activity, order: "vote_numbers desc")%>
+        </th>
       </tr>
     </thead>
 
     <tbody>
       <% if @photographs.empty? %>
         <tr>
-          <td colspan="5">暂无作品</td>
+          <td colspan="6">暂无作品</td>
         <tr>
       <% else %>
       <% @photographs.each do |photograph| %>
         <tr>
           <td><%= photograph.name %></td>
-          <td><%= photograph.user.try :nickname %></td>
+          <td><%=link_to (photograph.user.try :nickname), user_path(photograph.user.id) %></td>
+          <td><%= photograph.try :vote_numbers %></td>
           <td><%= link_to "查看", activity_photograph_path(@activity, photograph), method: 'get' %></td>
           <td><%= link_to "编辑", edit_activity_photograph_path(@activity, photograph) %></td>
           <td><%= link_to "删除", activity_photograph_path(@activity, photograph), method: 'delete' %></td>
