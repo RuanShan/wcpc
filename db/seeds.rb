@@ -20,3 +20,13 @@ activity = Activity.create!(
   shop:shop
 )
 puts 'CREATED ACTIVITY 1'
+
+card = Card.create!(
+  name:'优惠券',
+  origin:'WCPC',
+  shop_id:shop.id,
+  url:'www.taobao.com',
+  start_date: Date.current,
+  end_date:Date.current.since(1.month)
+)
+puts 'CREATED CARD 1'

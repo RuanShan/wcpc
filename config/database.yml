@@ -15,7 +15,7 @@ development:
 
 development_hui:
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
   reconnect: false
   database: wcpc_production
   username: root

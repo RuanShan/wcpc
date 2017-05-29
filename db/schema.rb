@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528152637) do
+ActiveRecord::Schema.define(version: 20170529015602) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "intro",          limit: 65535
     t.integer  "traffic"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["shop_id"], name: "index_activities_on_shop_id", using: :btree
   end
 
-  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "origin"
     t.date     "start_date"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["shop_id"], name: "index_cards_on_shop_id", using: :btree
   end
 
-  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "serial_number"
     t.integer  "activity_id"
     t.integer  "user_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["user_id"], name: "index_coupons_on_user_id", using: :btree
   end
 
-  create_table "photographs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "photographs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "intro",              limit: 65535
     t.text     "manifesto",          limit: 65535
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["user_id"], name: "index_photographs_on_user_id", using: :btree
   end
 
-  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "photograph_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["photograph_id"], name: "index_photos_on_photograph_id", using: :btree
   end
 
-  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "intro",             limit: 65535
     t.datetime "created_at",                      null: false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.datetime "logo_updated_at"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  limit: 128, default: "", null: false
     t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token",   limit: 128
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.string   "last_sign_in_ip",        limit: 128
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "name",                   limit: 128
+    t.string   "name",                   limit: 128,                           collation: "utf8mb4_general_ci"
     t.string   "provider"
     t.string   "uid"
-    t.string   "nickname"
+    t.string   "nickname",               limit: 128,                           collation: "utf8mb4_general_ci"
     t.integer  "gender"
     t.string   "avatar"
     t.string   "province"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20170528152637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "photograph_id"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
