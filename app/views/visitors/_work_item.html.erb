@@ -1,7 +1,7 @@
 <%@photographs.to_a.each_index do |index|%>
   <%photograph = @photographs[index]%>
   <%if (index%2)==i%>
-    <article class="weui-article" style="padding:5px;">
+    <article class="weui-article page<%=page%>" style="padding:5px;">
       <section>
         <%=link_to "/show/#{photograph.id}", remote:true do %>
           <%=image_tag photograph.cover_url(:medium) %>

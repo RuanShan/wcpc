@@ -1,8 +1,15 @@
-<%if @photographs.present? %>
-  $("#works1").append(<%==(render :partial=>'work_item', locals:{i: 0}).to_json %>);
-  $("#works2").append(<%==(render :partial=>'work_item', locals:{i: 1}).to_json %>);
-  $("#refresh").attr("href","/works?page=<%=@current_page+1%>")
-<%else%>
-  $("#refresh").attr("href","#")
-  $("#refresh").html("到底啦");
-<%end%>
+if($(".page<%=@current_page.to_s%>").length == 0){
+  <%if @photographs.present? %>
+    $("#works1").append(<%==(render :partial=>'work_item', locals:{i: 0, page: @current_page.to_s}).to_json %>);
+    $("#works2").append(<%==(render :partial=>'work_item', locals:{i: 1, page: @current_page.to_s}).to_json %>);
+    <% if @photographs.total_pages > @current_page%>
+      $("#refresh").attr("href","/works?page=<%=@current_page+1%>")
+    <%else%>
+      $("#refresh").remove();
+      $("#refresh_outer").html("到底啦");
+    <%end%>
+  <%else%>
+    $("#refresh").remove();
+    $("#refresh_outer").html("到底啦");
+  <%end%>
+}

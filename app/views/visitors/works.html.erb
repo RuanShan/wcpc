@@ -109,5 +109,15 @@
 <script>
   $(function(){
     setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%=@activity.terminate_time.day%>);}, 1000);
+    $(".weui-tab__panel").scroll(function(){
+      var viewH =$(this).height();//可见高度
+      var contentH =$(this).get(0).scrollHeight;//内容高度
+      var scrollTop =$(this).scrollTop();//滚动高度
+      if(scrollTop/(contentH -viewH)>=0.90){ 
+        if($("#refresh").length>0){
+          $("#refresh").click();
+        }
+      }
+    });
   });
 </script>

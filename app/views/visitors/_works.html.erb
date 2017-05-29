@@ -1,11 +1,12 @@
 <div class="wcpc_content">
   <%2.times do |i|%>
     <div id="works<%=i+1%>" style="width:50%;float:left;">
-      <%=render :partial=>"work_item", locals:{i: i}%>
+      <%=render :partial=>"work_item", locals:{i: i, page:@current_page.to_s}%>
     </div>
   <%end%>
-  <div style="float:left;width:100%;text-align:center;">
-    <%=link_to "点击刷新", "/works?page=#{(@current_page+1).to_s}", :remote=>true, :id=>"refresh", style:"color:gray;" %>
+  <div id="refresh_outer" style="float:left;width:100%;text-align:center;">
+    下面还有哦
+    <%=link_to "点击刷新", "/works?page=#{(@current_page+1).to_s}", :remote=>true, :id=>"refresh", style:"color:gray;display:none;" %>
   </div>
 
 </div>
