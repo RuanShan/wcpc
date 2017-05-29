@@ -1,8 +1,8 @@
 class PhotographsController < ApplicationController
   layout "wechat", only: [:new, :create, :vote]
-  before_action :set_wechat_user, only: [:new, :create, :vote]
-  before_action :authenticate_user!, except: [:new, :create, :vote]
-  before_action :set_photograph, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_wechat_user, only: [:new, :create, :vote, :user_edit, :user_update]
+  before_action :authenticate_user!, except: [:new, :create, :vote, :user_edit, :user_update]
+  before_action :set_photograph, only: [:show, :edit, :update, :user_edit, :user_update, :destroy, :vote]
 
   def index
     @photographs = @activity.photographs.paginate(:page => params[:page])
@@ -36,7 +36,6 @@ class PhotographsController < ApplicationController
       @current_wechat_user.save
     end
     if @photograph.errors.empty?
-      flash[:notice] = "create photograph"
       redirect_to "/show/#{@photograph.id}"
     else
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"
@@ -62,6 +61,24 @@ class PhotographsController < ApplicationController
       logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"
       (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
       render :edit
+    end
+  end
+
+  def user_edit
+    (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
+  end
+
+  def user_update
+    @photograph.update(photograph_params)
+    if @photograph.errors.empty?
+      respond_to do |format|
+        format.html { redirect_to "/show/#{@photograph.id}" }
+        format.js { render :user_update }
+      end
+    else
+      logger.debug "++++++++++++++++++++++++++@photograph.errors=#{@photograph.errors.inspect}"
+      (Photograph.upload_limit-@photograph.photos.size).times { @photograph.photos.build}
+      render :user_edit
     end
   end
 

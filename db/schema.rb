@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema.define(version: 20170529015602) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "activities", force: :cascade do |t|
     t.string   "name"
-    t.text     "intro",          limit: 65535
+    t.text     "intro"
     t.integer  "traffic"
     t.datetime "start_time"
     t.datetime "terminate_time"
     t.integer  "shop_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["shop_id"], name: "index_activities_on_shop_id", using: :btree
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["shop_id"], name: "index_activities_on_shop_id"
   end
 
-  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cards", force: :cascade do |t|
     t.string   "name"
     t.string   "origin"
     t.date     "start_date"
@@ -33,37 +33,37 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.datetime "updated_at", null: false
     t.integer  "shop_id"
     t.string   "url"
-    t.index ["shop_id"], name: "index_cards_on_shop_id", using: :btree
+    t.index ["shop_id"], name: "index_cards_on_shop_id"
   end
 
-  create_table "coupons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "coupons", force: :cascade do |t|
     t.string   "serial_number"
     t.integer  "activity_id"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["activity_id"], name: "index_coupons_on_activity_id", using: :btree
-    t.index ["user_id"], name: "index_coupons_on_user_id", using: :btree
+    t.index ["activity_id"], name: "index_coupons_on_activity_id"
+    t.index ["user_id"], name: "index_coupons_on_user_id"
   end
 
-  create_table "photographs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "photographs", force: :cascade do |t|
     t.string   "name"
-    t.text     "intro",              limit: 65535
-    t.text     "manifesto",          limit: 65535
+    t.text     "intro"
+    t.text     "manifesto"
     t.integer  "vote_numbers"
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.index ["activity_id"], name: "index_photographs_on_activity_id", using: :btree
-    t.index ["user_id"], name: "index_photographs_on_user_id", using: :btree
+    t.index ["activity_id"], name: "index_photographs_on_activity_id"
+    t.index ["user_id"], name: "index_photographs_on_user_id"
   end
 
-  create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "photos", force: :cascade do |t|
     t.integer  "photograph_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -71,21 +71,21 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.datetime "photo_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["photograph_id"], name: "index_photos_on_photograph_id", using: :btree
+    t.index ["photograph_id"], name: "index_photos_on_photograph_id"
   end
 
-  create_table "shops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "shops", force: :cascade do |t|
     t.string   "name"
-    t.text     "intro",             limit: 65535
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.text     "intro"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 128, default: "", null: false
     t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token",   limit: 128
@@ -94,14 +94,14 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.integer  "sign_in_count",                      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 128
-    t.string   "last_sign_in_ip",        limit: 128
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "name",                   limit: 128,                           collation: "utf8mb4_general_ci"
+    t.string   "name",                   limit: 128
     t.string   "provider"
     t.string   "uid"
-    t.string   "nickname",               limit: 128,                           collation: "utf8mb4_general_ci"
+    t.string   "nickname",               limit: 128
     t.integer  "gender"
     t.string   "avatar"
     t.string   "province"
@@ -109,25 +109,16 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.string   "country"
     t.integer  "card_status"
     t.string   "phone"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "photograph_id"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["photograph_id"], name: "index_votes_on_photograph_id", using: :btree
-    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
+    t.index ["photograph_id"], name: "index_votes_on_photograph_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "activities", "shops"
-  add_foreign_key "cards", "shops"
-  add_foreign_key "coupons", "activities"
-  add_foreign_key "coupons", "users"
-  add_foreign_key "photographs", "activities"
-  add_foreign_key "photographs", "users"
-  add_foreign_key "photos", "photographs"
-  add_foreign_key "votes", "photographs"
-  add_foreign_key "votes", "users"
 end

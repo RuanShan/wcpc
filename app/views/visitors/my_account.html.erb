@@ -28,6 +28,9 @@
           <section>
             <%= image_tag photo.photo.url%>
           </section>
+          <div class="weui-btn-area">
+            <%=link_to "修改作品", user_edit_activity_photograph_path(@activity, @photograph), remote:true, class:"weui-btn weui-btn_primary", style:"color:#f3d4a1;"%>
+          </div>
         </article>
       <%end%>
     <%else%>

@@ -16,7 +16,7 @@
       <% @photographs.each do |photograph| %>
         <tr>
           <td><%= photograph.name %></td>
-          <td><%= photograph.user.name %></td>
+          <td><%= photograph.user.try :nickname %></td>
           <td><%= link_to "查看", activity_photograph_path(@activity, photograph), method: 'get' %></td>
           <td><%= link_to "编辑", edit_activity_photograph_path(@activity, photograph) %></td>
           <td><%= link_to "删除", activity_photograph_path(@activity, photograph), method: 'delete' %></td>

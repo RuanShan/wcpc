@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       end
       member do
         get :vote
+        get :user_edit
+        patch :user_update
       end
     end
     #resources :coupons do

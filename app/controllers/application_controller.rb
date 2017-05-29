@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       @current_wechat_user = User.find(7)  and return
     end
     if Rails.env.development_hui?
-      @current_wechat_user = User.find(5)  and return
+      @current_wechat_user = User.find(2)  and return
     end
 
     wechat_oauth2("snsapi_base") do |openid,other_info|
