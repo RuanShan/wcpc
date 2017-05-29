@@ -9,9 +9,11 @@
 <div style="width:90%;">
   <%form_action =@photograph.persisted? ? "user_update" : "create"%>
   <%= form_for(@photograph, url: {:action=>form_action}, remote:true ) do |f| %>
+    <div style="color:#006934;font-size:0.7em;">标*为必填项</div>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
       <div class="weui-cell__hd">
-        <%= f.label :photo, class:"weui-label", style:"text-align:left;" %>
+        <div style="float:left;padding-right:10px;">*</div>
+        <%= f.label :photo, class:"weui-label", style:"text-align:left;float:left;" %>
       </div>
     </div>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
@@ -39,6 +41,7 @@
     <div class="weui-cells weui-cells_form">
       <div class="weui-cell <%if @photograph.errors.include?(:name)%>weui-cell_warn<%end%>">
         <div class="weui-cell__hd">
+          <div style="float:left;padding-right:10px;">*</div>
           <%= f.label :name, class:"weui-label", style:"text-align:left;" %>
         </div>
       </div>
@@ -64,6 +67,21 @@
       <%= f.fields_for :user do |user_form| %>
         <div class="weui-cell">
           <div class="weui-cell__hd">
+            <div style="float:left;padding-right:10px;">*</div>
+            <%= user_form.label :name, class:"weui-label", style:"text-align:left;" %>
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div id="user_div" class="weui-cell__bd">
+            <div class="weui-cell__bd">
+              <%= user_form.text_field :name, class:"weui-input", placeholder:"请输入姓名", required: true%>
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-cell">
+          <div class="weui-cell__hd">
+            <div style="float:left;padding-right:10px;">*</div>
             <%= user_form.label :phone, class:"weui-label", style:"text-align:left;" %>
           </div>
         </div>
@@ -74,6 +92,7 @@
             </div>
           </div>
         </div>
+        <div id="intro_rest" class="weui-cells__tips" style="text-align:left;font-size:0.7em;">填写姓名和电话便于后期获奖通知</div>
       <% end %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :activity_id %>
@@ -111,22 +130,27 @@ $(document).ready(function(){
           rangelength:[2,15]
         },
         'photograph[intro]':{
-          required: true,
+          required: false,
           rangelength:[2,60]
         },
-          'photograph[user_attributes][phone]':{
+        'photograph[user_attributes][name]':{
+            required:true,
+        },
+        'photograph[user_attributes][phone]':{
             required:true,
             isMobile: true
-          }
-        },
+        }
+      },
       messages : {
         'photograph[name]' : {
             required : "作品名称别忘了填",
             rangelength : "名称需要2-15位字符"
         },
         'photograph[intro]':{
-          required: "作品介绍填一下吧",
           rangelength:"介绍文字需要2-60位字符"
+        },
+        'photograph[user_attributes][name]':{
+            required:"请留下您的姓名哦",
         },
         'photograph[user_attributes][phone]' : {
             required : "需要您的联系方式哦",

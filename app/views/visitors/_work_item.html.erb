@@ -16,7 +16,9 @@
             <%end%>
             <span id="votes<%= photograph.id%>"><%=photograph.vote_numbers.to_i%></span>
             <h1>#<%=photograph.name%></h1>
-            <h2 style="color:gray;"><%=photograph.intro[0,20]%>...</h2>
+            <%if photograph.intro.present?%>
+              <h2 style="color:gray;"><%=photograph.intro[0,20]%>...</h2>
+            <%end%>
         </div>
       </section>
     </article>

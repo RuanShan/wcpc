@@ -22,4 +22,5 @@ zh-CN:
         start_date: "开始日期"
         end_date: "结束日期"
       user:
+        name: "姓名"
         phone: "电话号码"

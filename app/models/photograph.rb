@@ -12,7 +12,7 @@ class Photograph < ApplicationRecord
 
   validates :photos, presence: true
   validates :name, length: { in: 2..15 }
-  validates :intro, length: { in: 2..60 }
+  validates :intro, length: { in: 2..60 }, if: Proc.new {|p|p.intro.present?}
 
   after_create :get_card
 
