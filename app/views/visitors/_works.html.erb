@@ -1,3 +1,14 @@
+<div style="width:50%;float:left;margin-top:20px;">
+  <div id="newest" class="tab_menu" <%if @order_by == "created_at"%>style="border-bottom:solid 2px black;"<%end%>>
+    <%=link_to "最新", "/works", :remote=>true, style:"color:black;" %>
+  </div>
+</div>
+<div style="width:50%;float:left;margin-top:20px;">
+  <div id="hotest" class="tab_menu" <%if @order_by == "vote_numbers"%>style="border-bottom:solid 2px black;"<%end%>>
+    <%=link_to "最热", "/works?order=vote_numbers", :remote=>true, style:"color:black;" %>
+  </div>
+</div>
+
 <div class="wcpc_content">
   <%2.times do |i|%>
     <div id="works<%=i+1%>" style="width:50%;float:left;">
@@ -6,7 +17,7 @@
   <%end%>
   <div id="refresh_outer" style="float:left;width:100%;text-align:center;">
     下面还有哦
-    <%=link_to "点击刷新", "/works?page=#{(@current_page+1).to_s}", :remote=>true, :id=>"refresh", style:"color:gray;display:none;" %>
+    <%=link_to "点击刷新", "/works?order=#{@order_by}&page=#{(@current_page+1).to_s}", :remote=>true, :id=>"refresh", style:"color:gray;display:none;" %>
   </div>
 
 </div>

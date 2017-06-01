@@ -25,69 +25,11 @@
     <tr><td colspan=3>&nbsp;</td></tr>
   </table>
 </div>
-<div class="weui-btn-area" id="countdown" style="padding-bottom:30px;">
-  <table style="width:100%;" cellpadding="0" cellspacing="0">
-    <tr>
-      <td align="center" colspan=2>&nbsp;</td>
-      <td align="center" colspan=2 rowspan=2>距离活动结束还有</td>
-      <td align="center" colspan=2>&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="center" colspan=2 style="border-top:solid 1px gray;border-left:solid 1px gray;">&nbsp;</td>
-      <td align="center" colspan=2 style="border-top:solid 1px gray;border-right:solid 1px gray;">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="center" style="border-bottom:solid 1px gray;border-left:solid 1px gray;">&nbsp;</td>
-      <td align="center" rowspan=2>
-        <table>
-          <tr>
-            <td><a id="d1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td><a id="d2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td>天</td>
-          </tr>
-        </table>
-      </td>
-      <td align="center" rowspan=2>
-        <table>
-          <tr>
-            <td><a id="h1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td><a id="h2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td>时</td>
-          </tr>
-        </table>
-      </td>
-      <td align="center" rowspan=2>
-        <table>
-          <tr>
-            <td><a id="m1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td><a id="m2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td>分</td>
-          </tr>
-        </table>
-      </td>
-      <td align="center" rowspan=2>
-        <table>
-          <tr>
-            <td><a id="s1" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td><a id="s2" class="weui-btn weui-btn_primary countdown" href="javascript:;">0</a></td>
-            <td>秒</td>
-          </tr>
-        </table>
-      </td>
-      <td align="center" style="border-bottom:solid 1px gray;border-right:solid 1px gray;">&nbsp;</td>
-    </tr>
-    <tr>
-      <td align="center">&nbsp;</td>
-      <td align="center">&nbsp;</td>
-    </tr>
-  </table>
-  </br>
-  <%=link_to "我要报名", new_activity_photograph_path(@activity), remote:true, class:"weui-btn weui-btn_primary", style:"color:#f3d4a1;"%>
-</div>
+
+<%=render :partial=>"count_down"%>
+
 <table class="activity_info" width="100%">
-  <tr>
-    <td><%=fa_icon "clock-o", text:@activity.duration %>
-  </tr>
+  <tr><td><%=fa_icon "clock-o", text:@activity.duration %></tr>
   <tr>
     <td>
       <%=link_to intro_path, remote:true do%>
@@ -103,7 +45,9 @@
     </td>
   </tr>
 </table>
-<%=render :partial=>"works"%>
+<div id="work_list">
+  <%=render :partial=>"works"%>
+</div>
 <script>
   $(function(){
     setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%=@activity.terminate_time.day%>);}, 1000);

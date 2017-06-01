@@ -6,8 +6,9 @@ class VisitorsController < ApplicationController
   end
 
   def works
+    @order_by = params[:order] ? params[:order] : "created_at"
     @current_page = params[:page] ? params[:page].to_i : 1
-    @photographs = @activity.photographs.order("created_at desc").paginate(:page => params[:page])
+    @photographs = @activity.photographs.order("#{@order_by} desc").paginate(:page => params[:page])
   end
 
   def review
