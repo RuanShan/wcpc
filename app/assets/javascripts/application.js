@@ -97,8 +97,8 @@ $(function(){
       pagination: '.swiper-pagination',
       paginationType: 'bullets',
       paginationClickable: true,
-      //speed:2500,
-      //autoplay: true,
+      speed:3500,
+      autoplay: true,
       loop: true
     }
   );
