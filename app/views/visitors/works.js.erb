@@ -6,7 +6,7 @@
       $("#works1").append(<%==(render :partial=>'work_item', locals:{i: 0, page: @current_page.to_s}).to_json %>);
       $("#works2").append(<%==(render :partial=>'work_item', locals:{i: 1, page: @current_page.to_s}).to_json %>);
       <% if @photographs.total_pages > @current_page%>
-        $("#refresh").attr("href","/works?order=#{@order_by}&page=<%=@current_page+1%>")
+        $("#refresh").attr("href","/works?order=<%=@order_by%>&page=<%=@current_page+1%>")
       <%else%>
         $("#refresh").remove();
         $("#refresh_outer").html("到底啦");
