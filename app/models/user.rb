@@ -7,6 +7,7 @@ class User < ApplicationRecord
   before_validation :set_password, on: :create
 
   has_many :photographs, dependent: :destroy
+  has_many :votes
   self.per_page = 10
 
   def email_required?

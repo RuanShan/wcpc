@@ -3,7 +3,6 @@ class VisitorsController < ApplicationController
   before_action :set_wechat_user, except: [:subscribe]
 
   def index
-
   end
 
   def works
@@ -12,6 +11,7 @@ class VisitorsController < ApplicationController
   end
 
   def review
+    @card = Card.first
   end
 
   def subscribe

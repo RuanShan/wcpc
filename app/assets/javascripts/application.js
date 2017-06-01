@@ -56,6 +56,23 @@ $(function(){
   $(".footer_off").css("height",footer_height+"px")
   $(".footer_text").css("padding-top",footer_text_top+"px")
 
+  var poster_width=640;
+  var poster_height=1708;
+  if(window_width>poster_width){
+    var poster_fit_width=poster_width;
+  }else{
+    var poster_fit_width=window_width;
+  }
+  var rate = (poster_fit_width/poster_width);
+  //var poster_link = [38, 300, 145, 335];
+  var poster_link = [0, 255, 200, 370];
+  var coords = "";
+  coords += Math.floor(rate*poster_link[0]).toString()+",";
+  coords += Math.floor(rate*poster_link[1]).toString()+",";
+  coords += Math.floor(rate*poster_link[2]).toString()+",";
+  coords += Math.floor(rate*poster_link[3]).toString();
+  $("#area").attr("coords",coords)
+
   if($("#cover").length>0){
     var height = Math.floor((window_width*501)/751);
     $("#cover").css("width",window_width+"px");

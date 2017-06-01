@@ -38,7 +38,7 @@
     <%end%>
   </div>
   <div id="cards" style="width:100%;float:left;display:none;">
-    <%if @photograph.present? && @card.present? %>
+    <%if (@current_wechat_user.votes.present? || @photograph.present?) && @card.present? %>
       <div style="width:100%;background-color:#e8e8e8;">
         <div style="width:100%;background-color:#016934;color:#f5d09d;height:150px;float:left;">
           <div style="width:100%;text-align:center;margin:20px 0;"><span style="font-weight:bold;font-size:2em;"><%=@card.name%></span></div>

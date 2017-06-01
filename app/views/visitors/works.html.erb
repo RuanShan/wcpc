@@ -1,6 +1,4 @@
-<div id="cover" style="width:100%;">
-<%=image_tag "cover.jpg", style:"width:100%;" %>
-</div>
+<%=render :partial=>"works_top"%>
 <div class="weui-grids" style="background-color:#006934;">
   <table style="width:100%;color:#f3d4a1;">
     <tr><td colspan=3>&nbsp;</td></tr>
@@ -113,7 +111,7 @@
       var viewH =$(this).height();//可见高度
       var contentH =$(this).get(0).scrollHeight;//内容高度
       var scrollTop =$(this).scrollTop();//滚动高度
-      if(scrollTop/(contentH -viewH)>=0.90){ 
+      if(scrollTop/(contentH -viewH)>=0.90){
         if($("#refresh").length>0){
           $("#refresh").click();
         }

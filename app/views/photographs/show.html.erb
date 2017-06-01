@@ -17,7 +17,12 @@
         <td>当前票数</td>
       </tr>
       <tr>
-        <td><%= @photograph.vote_numbers.to_i %></td>
+        <td>
+          <%= @photograph.vote_numbers.to_i %></br>
+          <%@photograph.votes.each{|vote|%>
+            <%= vote.user.nickname %>&nbsp;&nbsp;
+          <%}%>
+        </td>
       </tr>
       <tr>
         <td>作品简介</td>

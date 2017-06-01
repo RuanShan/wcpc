@@ -1,7 +1,14 @@
 <article class="weui-article">
   <section>
     <%4.times do |index|%>
-    <%=image_tag "trace_"+(index+1).to_s+".jpg"%>
+      <%if index == 0%>
+        <%=image_tag "trace_"+(index+1).to_s+".jpg", usemap:"#Map"%>
+      <%else%>
+        <%=image_tag "trace_"+(index+1).to_s+".jpg"%>
+      <%end%>
     <%end%>
+    <map name="Map" id="Map">
+      <area id="area" shape="rect" coords="0,0,0,0" href="<%=@card.url%>" />
+    </map>
   </section>
 </article>
