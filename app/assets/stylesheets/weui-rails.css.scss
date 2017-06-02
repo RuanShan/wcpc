@@ -173,8 +173,20 @@ table.activity_info a{
 label.error{color:red;}
 
 .tab_menu{
+  background-color:transparent;
+  color:gray;
+  border-bottom:2px solid gray;
   display:inline-block;
-  background-color:#f3d4a1;
-  padding:10px 30px;
+  padding:10px 0;
   text-align:center;
+  width:50%;
+}
+.tab_menu_selected{
+  background-color:#006934;
+  color:#f3d4a1;
+  border:0;
+  display:inline-block;
+  padding:10px 0;
+  text-align:center;
+  width:50%;
 }

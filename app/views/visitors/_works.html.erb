@@ -1,9 +1,8 @@
 <div style="display:flex;justify-content:space-around;width:100%;float:left;margin:20px 0;">
-  <%nstyle = @order_by == "created_at" ? "background-color:#006934;color:#f3d4a1;" : "color:#006934;"%>
-  <%=link_to "最新", "/works", :remote=>true, class:"tab_menu", style:"#{nstyle};" %>
-  <%hstyle = @order_by == "vote_numbers" ? "background-color:#006934;color:#f3d4a1;" : "color:#006934;"%>
-  <%=link_to "最热", "/works?order=vote_numbers", :remote=>true, class:"tab_menu", style:"#{hstyle};" %>
-  <%link_color = @order_by == "vote_numbers" ? "#f3d4a1" : "#006934"%>
+  <%nclass = @order_by == "created_at" ? "tab_menu_selected" : "tab_menu"%>
+  <%=link_to "最新", "/works", :remote=>true, class:nclass %>
+  <%hclass = @order_by == "vote_numbers" ? "tab_menu_selected" : "tab_menu"%>
+  <%=link_to "最热", "/works?order=vote_numbers", :remote=>true, class:hclass %>
 </div>
 
 <div class="wcpc_content">
