@@ -1,13 +1,16 @@
-<article class="weui-article main">
-  <div class="swiper-container" >
-    <section class="swiper-wrapper">
-        <p class="photo_item swiper-slide">
-          <%=image_tag "workstop1.jpg", id:"poster1"%>
-        </p>
-        <p class="photo_item swiper-slide">
-          <%=image_tag "workstop2.jpg", id:"poster2" %>
-        </p>
-    </section>
-    <div class="swiper-pagination"></div>
+  <div id="worktop_swiper" class="swiper-container" style="width:100%;">
+    <div class="swiper-wrapper">
+        <div class="photo_item swiper-slide">
+          <%=image_tag "workstop1.jpg", id:"poster1", style:"width:100%;"%>
+        </div>
+        <div class="photo_item swiper-slide">
+          <%=image_tag "workstop2.jpg", id:"poster2", style:"width:100%;" %>
+        </div>
+    </div>
   </div>
-</article>
+  <script>
+    $(function(){
+      var img_height=$("#poster1").height();
+      $("#worktop_swiper").height(img_height);
+    });
+  </script>
