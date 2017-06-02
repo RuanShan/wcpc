@@ -1,14 +1,9 @@
-<div style="width:50%;float:left;margin-top:20px;">
-  <div id="newest" class="tab_menu" <%if @order_by == "created_at"%>style="background-color:#006934"<%end%>>
-    <%link_color = @order_by == "created_at" ? "#f3d4a1" : "black"%>
-    <%=link_to "最新", "/works", :remote=>true, style:"color:#{link_color};" %>
-  </div>
-</div>
-<div style="width:50%;float:left;margin-top:20px;">
-  <div id="hotest" class="tab_menu" <%if @order_by == "vote_numbers"%>style="background-color:#006934"<%end%>>
-    <%link_color = @order_by == "vote_numbers" ? "#f3d4a1" : "black"%>
-    <%=link_to "最热", "/works?order=vote_numbers", :remote=>true, style:"color:#{link_color};" %>
-  </div>
+<div style="display:flex;justify-content:space-around;width:100%;float:left;margin:20px 0;">
+  <%nstyle = @order_by == "created_at" ? "background-color:#006934;color:#f3d4a1;" : "color:#006934;"%>
+  <%=link_to "最新", "/works", :remote=>true, class:"tab_menu", style:"#{nstyle};" %>
+  <%hstyle = @order_by == "vote_numbers" ? "background-color:#006934;color:#f3d4a1;" : "color:#006934;"%>
+  <%=link_to "最热", "/works?order=vote_numbers", :remote=>true, class:"tab_menu", style:"#{hstyle};" %>
+  <%link_color = @order_by == "vote_numbers" ? "#f3d4a1" : "#006934"%>
 </div>
 
 <div class="wcpc_content">
