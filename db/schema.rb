@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529015602) do
+ActiveRecord::Schema.define(version: 20170612073741) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
@@ -50,11 +50,11 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.string   "name"
     t.text     "intro"
     t.text     "manifesto"
-    t.integer  "vote_numbers"
+    t.integer  "vote_numbers",       default: 0
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20170529015602) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "name",                   limit: 128
+    t.string   "name"
     t.string   "provider"
     t.string   "uid"
     t.string   "nickname",               limit: 128
