@@ -147,33 +147,40 @@ function ShowCountDown(year,month,day)
   var hour=Math.floor((leftsecond-day*24*60*60)/3600);
   var minute=Math.floor((leftsecond-day*24*60*60-hour*3600)/60);
   var second=Math.floor(leftsecond-day*24*60*60-hour*3600-minute*60);
-  if(day<10){
-    var d1= "0";
-    var d2= day.toString().substr(0,1);
-  }else{
-    var d1= day.toString().substr(0,1);
-    var d2= day.toString().substr(1,1);
-  }
-  if(hour<10){
-    var h1= "0";
-    var h2= hour.toString().substr(0,1);
-  }else{
-    var h1= hour.toString().substr(0,1);
-    var h2= hour.toString().substr(1,1);
-  }
-  if(minute<10){
-    var m1= "0";
-    var m2= minute.toString().substr(0,1);
-  }else{
-    var m1= minute.toString().substr(0,1);
-    var m2= minute.toString().substr(1,1);
-  }
-  if(second<10){
-    var s1= "0";
-    var s2= second.toString().substr(0,1);
-  }else{
-    var s1= second.toString().substr(0,1);
-    var s2= second.toString().substr(1,1);
+  var d1= "0";
+  var d2= "0";
+  var h1= "0";
+  var h2= "0";
+  var m1= "0";
+  var m2= "0";
+  var s1= "0";
+  var s2= "0";
+  if( leftTime >0 )
+  {
+    if(day<10){
+      d2= day.toString().substr(0,1);
+    }else{
+      d1= day.toString().substr(0,1);
+      d2= day.toString().substr(1,1);
+    }
+    if(hour<10){
+      h2= hour.toString().substr(0,1);
+    }else{
+      h1= hour.toString().substr(0,1);
+      h2= hour.toString().substr(1,1);
+    }
+    if(minute<10){
+      m2= minute.toString().substr(0,1);
+    }else{
+      m1= minute.toString().substr(0,1);
+      m2= minute.toString().substr(1,1);
+    }
+    if(second<10){
+      s2= second.toString().substr(0,1);
+    }else{
+      s1= second.toString().substr(0,1);
+      s2= second.toString().substr(1,1);
+    }
   }
   $("#d1").html(d1);
   $("#d2").html(d2);
