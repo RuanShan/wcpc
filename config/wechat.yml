@@ -12,6 +12,7 @@ production:
   access_token: <%= ENV['WCPC_WECHAT_ACCESS_TOKEN'] %>
   jsapi_ticket: <%= ENV['WCPC_WECHAT_JSAPI_TICKET'] %>
   oauth2_cookie_duration: <%= ENV['WCPC_WECHAT_OAUTH2_COOKIE_DURATION'] %> # seconds
+  trusted_domain_fullname: "http://wxauth2.getstore.cn/wcpc"
 
 development:
   <<: *default
