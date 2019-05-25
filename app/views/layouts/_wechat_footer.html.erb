@@ -1,5 +1,5 @@
 <% if params[:action] != "subscribe" %>
-  <div class="weui-tabbar">
+  <div class="weui-tabbar footer">
     <%=link_to "/index" do %>
       <div align="center" class="<%if params[:controller] == 'visitors' && params[:action] == 'index'%>footer_on home_on<%else%>footer_off home_off<%end%>">
         <div class="footer_text">首页</div>
