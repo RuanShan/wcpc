@@ -19,8 +19,8 @@
 }
 
 .weui-btn_primary {
-    background-color: #006934;
-    color: #f3d4a1;
+    background-color: #F8B62D;
+    color: #40220F;
 }
 
 .weui-dialog{
@@ -28,19 +28,19 @@
   position:absolute;
 }
 .footer_on{
-/*  background-color: #f3d4a1;*/
+/*  background-color: #40220F;*/
 background-repeat: no-repeat;
 background-size: 100%;
   text-align:center;
-  color: #006934;
+  color: #F8B62D;
 }
 
 .footer_off{
-  /* background-color: #006934;*/
+  /* background-color: #F8B62D;*/
   background-repeat: no-repeat;
   background-size: 100%;
   text-align:center;
-  color: #f3d4a1;
+  color: #40220F;
 }
 .footer_text{
   font-size:0.7em;
@@ -107,11 +107,11 @@ background-size: 100%;
   bottom: 24px;
   .swiper-pagination-bullet
   {
-    background-color: #006934;
+    background-color: #F8B62D;
   }
   .swiper-pagination-bullet-active
   {
-    background-color: #f3d4a1;
+    background-color: #40220F;
   }
 }
 
@@ -119,17 +119,17 @@ background-size: 100%;
   border-radius:0;
   width:100px;
   height:5px;
-  background:#006934 none repeat scroll 0 0;
+  background:#F8B62D none repeat scroll 0 0;
   opacity:1;
 }
 .swiper-pagination-bullet-active{
-  background:#f3d4a1 none repeat scroll 0 0;
+  background:#40220F none repeat scroll 0 0;
   opacity:1;
 }
 
 .ranking_table {
   padding: 10px;
-  border-bottom:2px solid #006934;
+  border-bottom:2px solid #F8B62D;
 }
 table.activity_info td{
   padding:5px 10px;
@@ -182,8 +182,8 @@ label.error{color:red;}
   width:50%;
 }
 .tab_menu_selected{
-  background-color:#006934;
-  color:#f3d4a1;
+  background-color:#F8B62D;
+  color:#40220F;
   border:0;
   display:inline-block;
   padding:10px 0;

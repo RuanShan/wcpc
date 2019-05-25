@@ -9,11 +9,11 @@
   </section>
 
       <%= link_to vote_activity_photograph_path(@activity,@photograph), remote:true do%>
-        <div align="center" style="width:50%;background-color:#006934;color:white;padding:10px 0;float:left;">
+        <div align="center" style="width:50%;background-color:#F8B62D;color:white;padding:10px 0;float:left;">
           <%=fa_icon "heart-o", text:"投票", style:"color:white;"%>
         </div>
       <%end%>
-      <div id="share_time_line" align="center" style="width:50%;background-color:#f3d4a1;color:white;padding:10px 0;float:left;">
+      <div id="share_time_line" align="center" style="width:50%;background-color:#40220F;color:white;padding:10px 0;float:left;">
         <%=fa_icon "thumbs-o-up", text:"为TA加油", style:"color:white;"%>
       </div>
 
@@ -21,7 +21,7 @@
       <div class="weui-media-box__bd" style="padding:20px;">
         <%avatar_url = @photograph.user.avatar.present? ? @photograph.user.avatar : ""%>
         <%=image_tag avatar_url, width:80, height:80, align:"right", style:"border-radius:50%;" %>
-        <%=fa_icon "heart-o", style:"color:#006934;"%>
+        <%=fa_icon "heart-o", style:"color:#F8B62D;"%>
         <span id="votes<%= @photograph.id%>"><%=@photograph.vote_numbers.to_i%></span>
         <h1>#<%=@photograph.name%></h1>
         <h2 style="color:gray;"><%=@photograph.intro%></h2>

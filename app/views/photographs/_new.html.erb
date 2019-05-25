@@ -3,14 +3,14 @@
 </div>
 <center>
   <%=link_to nil, href:"#", onclick:"$('#photograph_photos_attributes_0_photo').click();" do %>
-    <div style="background-color:#006934;color:#f3d4a1;margin:15px 0;padding:10px 0;width:90%;text-align:center;">
+    <div style="background-color:#F8B62D;color:#40220F;margin:15px 0;padding:10px 0;width:90%;text-align:center;">
       <h4>上传图片</h4>
     </div>
   <% end %>
 <div style="width:90%;">
   <%form_action =@photograph.persisted? ? "user_update" : "create"%>
   <%= form_for(@photograph, url: {:action=>form_action}, remote:true ) do |f| %>
-    <div style="color:#006934;font-size:0.7em;">标*为必填项</div>
+    <div style="color:#F8B62D;font-size:0.7em;">标*为必填项</div>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
       <div class="weui-cell__hd">
         <div style="float:left;padding-right:10px;">*</div>
