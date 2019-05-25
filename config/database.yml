@@ -42,5 +42,5 @@ production:
   reconnect: false
   database: wcpc_production
   username: root
-  password:
+  password: root
   socket: /tmp/mysql.sock
