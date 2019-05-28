@@ -4,6 +4,8 @@ class PhotographsController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create, :vote, :user_edit, :user_update]
   before_action :set_photograph, only: [:show, :edit, :update, :user_edit, :user_update, :destroy, :vote]
 
+  after_action :set_user_subscribed, only: [:new ]
+
   def index
     order = params[:order] ? params[:order] : "created_at desc"
     @photographs = @activity.photographs.order(order).paginate(:page => params[:page])
@@ -108,4 +110,7 @@ class PhotographsController < ApplicationController
     @photograph = Photograph.find(params[:id])
   end
 
+  def set_user_subscribed
+    @current_wechat_user.update(:subscribed, true)
+  end
 end
