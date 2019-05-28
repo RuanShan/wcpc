@@ -6,6 +6,11 @@ class Api::V1::WechatsController < ApplicationController
     request.reply.text "echo: #{content}" # Just echo
   end
 
+  # 成员进入应用的事件推送
+  on :event, with: 'enter_agent' do |request|
+    request.reply.text "诺恩健康乐园 | 晒宝贝吃饭最萌瞬间评选大赛开始啦！点击 <a href='http://wcpc.getstore.cn'>参与活动 </a>。"
+  end
+
   on :event, with: 'subscribe' do |request|
     #request.reply.text "#{request[:FromUserName]} subscribe now"
     txt = <<END_OF_STRING
