@@ -111,6 +111,6 @@ class PhotographsController < ApplicationController
   end
 
   def set_user_subscribed
-    @current_wechat_user.update(:subscribed, true)
+    @current_wechat_user.update_attribute(:subscribed, true)
   end
 end
