@@ -9,13 +9,15 @@ class Api::V1::WechatsController < ApplicationController
   on :event, with: 'subscribe' do |request|
     #request.reply.text "#{request[:FromUserName]} subscribe now"
     txt = <<END_OF_STRING
-    语禾宝宝粥米
-禾你一起宠爱 | 萌宝睡照摄影大赛 报名正式启动！
-
-点击 <a href='http://wx-wcpc.getstore.cn'>参与活动 </a>。
-上传你最中意的宝宝睡姿照片，并邀请好友助力投票，
+诺恩健康乐园 | 晒宝贝吃饭最萌瞬间评选大赛开始啦！
+   
+点击 < a href='http://wcpc.getstore.cn'>参与活动 </a>。
+     
+晒萌娃，PO萌餐，丰厚奖品等你拿！
+     
+晒出宝宝吃东西的可爱照片，并邀请好友助力投票，
 即有机会赢得超越想象的心动大礼。
-
+     
 惊喜福利必将眷顾每一位超人妈咪以及英雄老爸！
 END_OF_STRING
 
@@ -30,13 +32,15 @@ END_OF_STRING
   on :scan, with: 'qrscene_20170530' do |request, ticket|
     Rails.logger.debug "Unsubscribe user #{request[:FromUserName]} Ticket #{ticket}"
 txt = <<END_OF_STRING
-    语禾宝宝粥米
-禾你一起宠爱 | 萌宝睡照摄影大赛 报名正式启动！
-
-点击 <a href='http://wx-wcpc.getstore.cn'>参与活动 </a>。
-上传你最中意的宝宝睡姿照片，并邀请好友助力投票，
+诺恩健康乐园 | 晒宝贝吃饭最萌瞬间评选大赛开始啦！
+ 
+点击 < a href='http://wcpc.getstore.cn'>参与活动 </a>。
+ 
+晒萌娃，PO萌餐，丰厚奖品等你拿！
+ 
+晒出宝宝吃东西的可爱照片，并邀请好友助力投票，
 即有机会赢得超越想象的心动大礼。
-
+ 
 惊喜福利必将眷顾每一位超人妈咪以及英雄老爸！
 END_OF_STRING
 
