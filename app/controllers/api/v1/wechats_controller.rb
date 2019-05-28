@@ -11,7 +11,7 @@ class Api::V1::WechatsController < ApplicationController
     txt = <<END_OF_STRING
 诺恩健康乐园 | 晒宝贝吃饭最萌瞬间评选大赛开始啦！
    
-点击 < a href='http://wcpc.getstore.cn'>参与活动 </a>。
+点击 <a href='http://wcpc.getstore.cn'>参与活动 </a>。
      
 晒萌娃，PO萌餐，丰厚奖品等你拿！
      
@@ -34,7 +34,7 @@ END_OF_STRING
 txt = <<END_OF_STRING
 诺恩健康乐园 | 晒宝贝吃饭最萌瞬间评选大赛开始啦！
  
-点击 < a href='http://wcpc.getstore.cn'>参与活动 </a>。
+点击 <a href='http://wcpc.getstore.cn'>参与活动 </a>。
  
 晒萌娃，PO萌餐，丰厚奖品等你拿！
  
