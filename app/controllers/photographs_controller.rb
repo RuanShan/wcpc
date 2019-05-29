@@ -103,7 +103,7 @@ class PhotographsController < ApplicationController
   private
 
   def photograph_params
-    params.require(:photograph).permit(:base64_image, :user_id, :activity_id, :name, :vote_numbers, :intro, photos_attributes: [:id,:photo,:_destroy], user_attributes: [:id,:name,:photo] )
+    params.require(:photograph).permit( :user_id, :activity_id, :name, :vote_numbers, :intro, photos_attributes: [:id,:base64_image,:photo,:_destroy], user_attributes: [:id,:name,:photo] )
   end
 
   def set_photograph
