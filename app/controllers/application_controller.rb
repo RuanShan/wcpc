@@ -55,17 +55,16 @@ class ApplicationController < ActionController::Base
 
     wechat_oauth2("snsapi_userinfo", 'http://wxauth2.ruanshan.com/wcpc') do |openid,other_info|
       # 检查是否关注诺恩
-      user_info = Wechat.api.web_userinfo( other_info['access_token'], openid)
       #如果关注了，能够取到用户信息，否则给出关注链接
+      @current_wechat_user = User.find_or_create_by!(uid: openid)
       logger.debug "user_info=#{user_info.inspect}"
-      if user_info
-        @current_wechat_user = User.find_or_create_by!(uid: openid)
+      if @current_wechat_user.avatar.blank?
+        user_info = Wechat.api.web_userinfo( other_info['access_token'], openid)
         @current_wechat_user.update_info(user_info)
         #if user_info["subscribe"].to_i == 0 && params[:action] != "subscribe"
         #  redirect_to "/subscribe"
         #end
-      else
-        redirect_to "/subscribe"
+
       end
     end
   end
