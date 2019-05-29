@@ -121,10 +121,17 @@ $(function() {
 });
 
 // 用户提交
-$(document).on('click', '#submitPhotoBtn', function(){
-  // 不需要发送file， use base64
-  $('.weui-uploader__input').attr("disabled",true);
-})
+// $(document).on('click', '#submitPhotoBtn', function(){
+//   // 不需要发送file， use base64
+//   var form = $(".photograph_form")
+//   $.ajax( { url:  form.attr('action') , type:form.attr('method'), dataType: 'json',
+//     data: $(".photograph_form").serialize(),
+//     success: function(data){
+//       //设置投票对象ID
+//       console.log(data);
+//     }
+//   });
+// })
 //title: "活动介绍",
 //text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
 //buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
@@ -254,7 +261,7 @@ function preview_photo(input, index) {
               var base64 = canvas.toDataURL('jpg', 0.8);
               img.src = base64;
               //输出转换后的流
-              $('.base64_image').val( base64 );
+              //$('.base64_image').val( base64 );
 
             }
           }
