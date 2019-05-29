@@ -121,10 +121,10 @@ $(function() {
 });
 
 // 用户提交
-//$(document).on('click', '.submitPhotoBtn', function(){
-//  var form = ".photograph_form"
-//  var data = $(form).serializeArray();
-//})
+$(document).on('click', '#submitPhotoBtn', function(){
+  // 不需要发送file， use base64  
+  $('.weui-uploader__input').attr("disabled",true);
+})
 //title: "活动介绍",
 //text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
 //buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
@@ -251,7 +251,7 @@ function preview_photo(input, index) {
                   break;
               }
               //输出转换后的base64图片
-              var base64 = canvas.toDataURL('jpg', 1);
+              var base64 = canvas.toDataURL('jpg', 0.8);
               img.src = base64;
               //输出转换后的流
               $('.base64_image').val( base64 );
