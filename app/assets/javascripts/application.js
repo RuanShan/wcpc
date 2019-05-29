@@ -254,7 +254,7 @@ function preview_photo(input, index) {
               var base64 = canvas.toDataURL('jpg', 0.8);
               img.src = base64;
               //输出转换后的流
-              $('.base64_image').val( base64 );
+              //$('.base64_image').val( base64 );
 
             }
           }
