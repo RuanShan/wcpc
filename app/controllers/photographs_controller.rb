@@ -81,8 +81,8 @@ class PhotographsController < ApplicationController
     end
     if params["photograph"]["photos_attributes"].present?
       photo_params = params["photograph"]["photos_attributes"].first
-
-      photo = Photo.find( photo_params['id'] )
+      Rails.logger.debug "photo_params", photo_params
+      photo = Photo.find_by_id( photo_params['id'] )
       photo.update( photo_params )
     end
 
