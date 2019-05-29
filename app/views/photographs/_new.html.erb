@@ -38,6 +38,8 @@
               <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})" %>
             </div>
           </div>
+          <%= photos_form.hidden_field :base64_image, class: 'base64_image' %>
+
         <% end %>
         <%if @photograph.errors.include?(:photos)%>请上传一张图片，格式为jpg, jpeg, png或gif<%end%>
       </div>
@@ -102,7 +104,6 @@
       <% end %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :activity_id %>
-      <%= f.hidden_field :base64_image, class: 'base64_image' %>
 
       <div class="weui-btn-area">
         <%= f.submit "确定发布", class:"weui-btn weui-btn_primary", id: 'submitPhotoBtn' %>
