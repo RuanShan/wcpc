@@ -13,7 +13,7 @@
            "share": {
               "imgUrl": "",//分享图，默认当相对路径处理，所以使用绝对路径的的话，“http://”协议前缀必须在。
               "desc" : "<%= @activity.intro.squish.gsub(/<\/?.*?>/,'')%>",//摘要,如果分享到朋友圈的话，不显示摘要。
-              "title" : "快来看！<%=@current_wechat_user.nickname%>分享了一张萌宝睡照，邀您共同参与及分享助力。",//分享卡片标题
+              "title" : "快来看！<%=@current_wechat_user.nickname%>分享了一张宝贝吃饭最萌瞬间，邀您共同参与及分享助力。",//分享卡片标题
               "link": "<%=root_url%>",//window.location.href,分享出去后的链接，这里可以将链接设置为另一个页面。
               "success":function(){//分享成功后的回调函数
               },
