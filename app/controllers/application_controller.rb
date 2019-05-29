@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
 
     wechat_oauth2("snsapi_userinfo") do |openid,other_info|
       # 检查是否关注诺恩
-      user_info = other_info #Wechat.api.user(openid)
+      user_info = Wechat.api.web_userinfo( other_info['access_token'], openid)
       #如果关注了，能够取到用户信息，否则给出关注链接
       logger.debug "user_info=#{user_info.inspect}"
       if user_info

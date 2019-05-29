@@ -21,7 +21,7 @@
               }
           }
       };
-      window.share_config.share.imgUrl = <%== @shop.logo.url(:medium).to_json%>;
+      window.share_config.share.imgUrl = <%== image_tag('share.jpg').to_json%>;
      wx.ready(function() {
        //wx.hideOptionMenu();
        wx.onMenuShareTimeline(share_config.share);//分享到朋友圈
