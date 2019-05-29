@@ -121,10 +121,10 @@ $(function() {
 });
 
 // 用户提交
-$(document).on('click', '#submitPhotoBtn', function(){
-  // 不需要发送file， use base64  
-  $('.weui-uploader__input').attr("disabled",true);
-})
+//$(document).on('click', '#submitPhotoBtn', function(){
+//  // 不需要发送file， use base64
+//  $('.weui-uploader__input').attr("disabled",true);
+//})
 //title: "活动介绍",
 //text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
 //buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
