@@ -1,10 +1,10 @@
 default: &default
-  appid: <%= ENV['WCPC_WECHAT_APPID'] %>
-  secret: <%= ENV['WCPC_WECHAT_SECRET'] %>
-  token:  <%= ENV['WCPC_WECHAT_TOKEN'] %>
+  appid: wx45afb5e9617eb63a
+  secret: e37e333753fc06dfab18006671440c8e
+  token:  mytoken
   access_token: <%= ENV['WCPC_WECHAT_ACCESS_TOKEN'] %>
   jsapi_ticket: <%= ENV['WCPC_WECHAT_JSAPI_TICKET'] %>
-
+  
 production:
   appid: <%= ENV['WCPC_WECHAT_APPID'] %>
   secret: <%= ENV['WCPC_WECHAT_SECRET'] %>

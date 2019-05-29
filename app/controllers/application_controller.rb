@@ -46,14 +46,11 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_wechat_subscriber
-    if Rails.env.development?
-      @current_wechat_user = User.find(7)  and return
-    end
-    if Rails.env.development_hui?
-      @current_wechat_user = User.find(2)  and return
-    end
-
-    wechat_oauth2("snsapi_userinfo", 'http://wxauth2.ruanshan.com/wcpc') do |openid,other_info|
+    #if Rails.env.development?
+    #  @current_wechat_user = User.find(7)  and return
+    #end
+    oauth2_redirect_url_base =  "http://testwx.getstore.cn" #'http://wxauth2.ruanshan.com/wcpc'
+    wechat_oauth2("snsapi_userinfo", oauth2_redirect_url_base) do |openid,other_info|
       # 检查是否关注诺恩
       #如果关注了，能够取到用户信息，否则给出关注链接
       @current_wechat_user = User.find_or_create_by!(uid: openid)
