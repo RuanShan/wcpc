@@ -35,7 +35,7 @@
               </div>
             </div>
             <div id="uploaddiv<%=photos_form.index%>" class="weui-uploader__input-box" <% if photos_form.index > 0 %> style="display:none;"<%end%>>
-              <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})", data: { disableWith: true} %>
+              <%= photos_form.file_field :photo, class:"weui-uploader__input", onchange:"preview_photo(this,#{photos_form.index})", data: { 'disable-with': true} %>
             </div>
           </div>
         <% end %>
