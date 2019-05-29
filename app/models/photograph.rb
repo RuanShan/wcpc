@@ -28,7 +28,7 @@ class Photograph < ApplicationRecord
   def save_base64_image
    if base64_image.present?
        adapter = Paperclip.io_adapters.for(base64_image)
-       adapter.original_filename = "base64.png"
+       adapter.original_filename = "base64.jpg"
        self.photo = adapter
      end
   end
