@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     #if Rails.env.development?
     #  @current_wechat_user = User.find(7)  and return
     #end
-    oauth2_redirect_url_base =  "http://testwx.getstore.cn" #'http://wxauth2.ruanshan.com/wcpc'
+    oauth2_redirect_url_base =  'http://wxauth2.ruanshan.com/wcpc' #"http://testwx.getstore.cn" #
     wechat_oauth2("snsapi_userinfo", oauth2_redirect_url_base) do |openid,other_info|
       # 检查是否关注诺恩
       #如果关注了，能够取到用户信息，否则给出关注链接
