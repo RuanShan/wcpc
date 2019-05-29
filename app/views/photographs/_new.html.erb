@@ -14,7 +14,7 @@
   <% end %>
 <div style="width:90%;">
   <%form_action =@photograph.persisted? ? "user_update" : "create"%>
-  <%= form_for(@photograph, url: {:action=>form_action}, remote:true, html: {class: 'photograph_form'}  ) do |f| %>
+  <%= form_for(@photograph, url: {:action=>form_action}, remote:true, html: {id: 'photograph_form'}  ) do |f| %>
     <div style="color:#F8B62D;font-size:0.7em;">标*为必填项</div>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
       <div class="weui-cell__hd">
