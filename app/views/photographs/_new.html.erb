@@ -14,7 +14,7 @@
   <% end %>
 <div style="width:90%;">
   <%form_action =@photograph.persisted? ? "user_update" : "create"%>
-  <%= form_for(@photograph, url: {:action=>form_action}, remote:true ) do |f| %>
+  <%= form_for(@photograph, url: {:action=>form_action}, remote:true, class: 'photograph_form' ) do |f| %>
     <div style="color:#F8B62D;font-size:0.7em;">标*为必填项</div>
     <div class="weui-cell <%if @photograph.errors.include?(:photos)%>weui-cell_warn<%end%>">
       <div class="weui-cell__hd">
@@ -102,9 +102,10 @@
       <% end %>
       <%= f.hidden_field :user_id %>
       <%= f.hidden_field :activity_id %>
+      <%= f.hidden_field :base64_image, class: 'base64_image' %>
 
       <div class="weui-btn-area">
-        <%= f.submit "确定发布", class:"weui-btn weui-btn_primary" %>
+        <%= f.submit "确定发布", class:"weui-btn weui-btn_primary", id: 'submitPhotoBtn' %>
       </div>
       <p>&nbsp;</p>
     </div>

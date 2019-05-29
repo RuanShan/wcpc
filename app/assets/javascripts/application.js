@@ -120,6 +120,11 @@ $(function() {
 
 });
 
+// 用户提交
+//$(document).on('click', '.submitPhotoBtn', function(){
+//  var form = ".photograph_form"
+//  var data = $(form).serializeArray();
+//})
 //title: "活动介绍",
 //text: <%== ( render :partial => 'intro',:formats=>[:html] ).to_json %>,
 //buttons: [{ text: "关闭", onClick: function(){ $.closeModal();} } ]
@@ -246,10 +251,10 @@ function preview_photo(input, index) {
                   break;
               }
               //输出转换后的base64图片
-              var base64 = canvas.toDataURL(file.type, 1);
+              var base64 = canvas.toDataURL('png', 1);
               img.src = base64;
               //输出转换后的流
-              //var newBlob = _this.convertBase64UrlToBlob(base64, file.type);
+              $('.base64_image').val( base64 );
 
             }
           }
