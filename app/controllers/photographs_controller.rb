@@ -80,7 +80,7 @@ class PhotographsController < ApplicationController
       @current_wechat_user.save
     end
     if params["photograph"]["photos_attributes"].present?
-      photo_params = params["photograph"]["photos_attributes"].first
+      photo_params = params["photograph"]["photos_attributes"]['0']
       #Rails.logger.debug  photo_params.inspect
       photo = Photo.find( photo_params['id'].to_i )
       photo.update( photo_params )
