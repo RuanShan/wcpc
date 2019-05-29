@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
       # 检查是否关注诺恩
       #如果关注了，能够取到用户信息，否则给出关注链接
       @current_wechat_user = User.find_or_create_by!(uid: openid)
-      logger.debug "user_info=#{user_info.inspect}"
+      logger.debug "other_info=#{other_info.inspect}"
       if @current_wechat_user.avatar.blank?
         user_info = Wechat.api.web_userinfo( other_info['access_token'], openid)
         @current_wechat_user.update_info(user_info)
