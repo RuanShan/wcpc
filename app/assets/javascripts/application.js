@@ -215,58 +215,7 @@ function preview_photo(input, index) {
     }
     var reader = new FileReader();
     reader.onload = function(evt) {
-      //https://segmentfault.com/a/1190000016535556
-      EXIF.getData(file, function() {
-        var Orientation = EXIF.getTag(this, "Orientation");
-        console.log( 'Orientation', Orientation)
-        if (Orientation == 1) {
-          console.log("图片无需处理");
-          img.src = evt.target.result;
-
-        } else {
-
-          console.log("Orientation>>>>>>", Orientation);
-          var uploadBase64 = new Image();
-          uploadBase64.src = evt.target.result;
-
-          uploadBase64.onload = function() {
-            //修正旋转图片
-            var expectWidth = uploadBase64.width;
-            var expectHeight = uploadBase64.height;
-
-            var canvas = document.createElement("canvas"),
-              ctx = canvas.getContext("2d");
-            canvas.width = expectWidth;
-            canvas.height = expectHeight;
-
-            ctx.drawImage(uploadBase64, 0, 0, expectWidth, expectHeight);
-            var base64 = null;
-
-            if (Orientation !== "" && Orientation != 1) {
-              switch (Orientation) {
-                case 6:
-                  console.log("顺时针旋转270度");
-                  rotateImg(uploadBase64, "left", canvas);
-                  break;
-                case 8:
-                  console.log("顺时针旋转90度");
-                  rotateImg(uploadBase64, "right", canvas);
-                  break;
-                case 3:
-                  console.log("顺时针旋转180度");
-                  rotateImg(uploadBase64, "horizen", canvas);
-                  break;
-              }
-              //输出转换后的base64图片
-              var base64 = canvas.toDataURL('jpg', 0.8);
-              img.src = base64;
-              //输出转换后的流
-              //$('.base64_image').val( base64 );
-
-            }
-          }
-        }
-      })
+      img.src = evt.target.result;
     }
     reader.readAsDataURL(file);
 
