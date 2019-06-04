@@ -12,7 +12,7 @@ class Vote < ApplicationRecord
 
     activity = self.photograph.activity
     if activity.terminate_time < DateTime.current
-      errors.add(:base, '活动已经结束！无法投票，谢谢关注')
+      errors.add(:user_id, '活动已经结束！无法投票，谢谢关注')
     end
   end
 end
