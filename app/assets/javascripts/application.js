@@ -149,7 +149,7 @@ function refresh_rest(input_id, rest_id, total) {
 
 function ShowCountDown(year, month, day, hours, mins, secs) {
   var now = new Date();
-  var endDate = new Date(year, month - 1, day, hours, mins, secs);
+  var endDate = new Date(year, month - 1, day);
   var leftTime = endDate.getTime() - now.getTime();
   var leftsecond = parseInt(leftTime / 1000);
   var day = Math.floor(leftsecond / (60 * 60 * 24));
