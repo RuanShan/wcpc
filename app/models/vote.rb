@@ -3,7 +3,7 @@ class Vote < ApplicationRecord
   belongs_to :user
   validates :user_id, uniqueness: { scope: :photograph_id,
     message: "您已经投过票啦！" }
-  validates :must_active
+  validate :must_active
 
 
 
