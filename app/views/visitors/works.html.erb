@@ -50,7 +50,7 @@
 </div>
 <script>
   $(function(){
-    setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%= @activity.terminate_time.day+1%>,<%= @activity.terminate_time.day%>,<%= @activity.terminate_time.hour%>,<%= @activity.terminate_time.min%>,<%= @activity.terminate_time.sec %>);}, 1000);
+    setInterval(function(){ShowCountDown(<%=@activity.terminate_time.year%>,<%=@activity.terminate_time.month%>,<%= @activity.terminate_time.day%>,<%= @activity.terminate_time.day%>,<%= @activity.terminate_time.hour%>,<%= @activity.terminate_time.min%>,<%= @activity.terminate_time.sec %>);}, 1000);
     $(".weui-tab__panel").scroll(function(){
       var viewH =$(this).height();//可见高度
       var contentH =$(this).get(0).scrollHeight;//内容高度
