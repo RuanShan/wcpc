@@ -147,9 +147,9 @@ function refresh_rest(input_id, rest_id, total) {
   $("#" + rest_id).html('（剩余' + rest + '字符）');
 }
 
-function ShowCountDown(year, month, day) {
+function ShowCountDown(year, month, day, hours, mins, secs) {
   var now = new Date();
-  var endDate = new Date(year, month - 1, day);
+  var endDate = new Date(year, month - 1, day, hours, mins, secs);
   var leftTime = endDate.getTime() - now.getTime();
   var leftsecond = parseInt(leftTime / 1000);
   var day = Math.floor(leftsecond / (60 * 60 * 24));
