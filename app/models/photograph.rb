@@ -30,7 +30,7 @@ class Photograph < ApplicationRecord
 
   def vote(wechat_user_id)
     vote = self.votes.create(user_id:wechat_user_id)
-    if vote
+    if vote && vote.errors.blank?
       self.vote_numbers = self.vote_numbers.to_i+1
       self.save
     end
